@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoWealth Pro - Advanced MLM Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f0f23;
+            --secondary: #00ff9d;
+            --accent: #8a2be2;
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --danger: #ff375f;
+            --info: #00d4ff;
+            --dark: #0a0a16;
+            --light: #f0f0f0;
+            --card-bg: rgba(20, 20, 40, 0.8);
+            --gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            --gradient-accent: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            --gradient-purple: linear-gradient(135deg, #8a2be2 0%, #ff00ff 100%);
+            --shadow: 0 10px 30px rgba(0, 255, 157, 0.1);
+            --glow: 0 0 20px rgba(0, 255, 157, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Glow Effects */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
+        }
+
+        .glow-box {
+            box-shadow: var(--shadow), var(--glow);
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: left 0.3s;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            background: rgba(0, 255, 157, 0.1);
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: 2px solid rgba(0, 255, 157, 0.5);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Market Ticker */
+        .market-ticker {
+            background: rgba(20, 20, 40, 0.9);
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            margin-top: 70px;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 2rem;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .crypto-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .crypto-price .price {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .crypto-price .change {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .crypto-price .change.positive {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+
+        .crypto-price .change.negative {
+            background: rgba(255, 55, 95, 0.2);
+            color: var(--danger);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 2rem 0;
+            min-height: calc(100vh - 300px);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #a0a0c0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Realtime Graph */
+        .realtime-graph {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .graph-container {
+            height: 300px;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .graph-line {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+            animation: drawGraph 2s ease-out forwards;
+        }
+
+        @keyframes drawGraph {
+            0% { width: 0; opacity: 0; }
+            100% { width: 100%; opacity: 1; }
+        }
+
+        /* Crypto Chat */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            box-shadow: var(--shadow);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+        }
+
+        .chat-container.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .chat-header {
+            padding: 1rem;
+            background: rgba(0, 255, 157, 0.1);
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: var(--gradient-accent);
+            color: var(--dark);
+        }
+
+        .message.bot {
+            align-self: flex-start;
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.5);
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid rgba(0, 255, 157, 0.2);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 8px;
+            color: var(--light);
+        }
+
+        /* Deposit Modal */
+        .deposit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .deposit-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .deposit-content {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .payment-method:hover {
+            background: rgba(0, 255, 157, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .payment-method.active {
+            border-color: var(--secondary);
+            background: rgba(0, 255, 157, 0.15);
+        }
+
+        /* Live Tracking */
+        .live-tracking {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .tracking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tracking-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: rgba(20, 20, 40, 0.7);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            background: rgba(0, 255, 157, 0.1);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient-accent);
+            color: var(--dark);
+            border-radius: 12px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.8rem 1.8rem;
+            background: var(--gradient-accent);
+            color: var(--dark);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #ffaa00 0%, #ff8800 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff375f 0%, #ff002b 100%);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.2);
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th {
+            background: rgba(0, 255, 157, 0.1);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table tr:hover {
+            background: rgba(0, 255, 157, 0.05);
+        }
+
+        /* Network Tree */
+        .network-tree {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 2rem 0;
+        }
+
+        .tree-level {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .tree-node {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--dark);
+            font-weight: bold;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tree-node:hover {
+            transform: scale(1.1);
+            box-shadow: var(--glow);
+        }
+
+        /* Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 35, 0.95);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(0, 255, 157, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 15, 35, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                backdrop-filter: blur(15px);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .chat-container {
+                width: 300px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                flex: 1;
+                min-width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo" onclick="switchTab('dashboard')">
+                    <i class="fas fa-bolt"></i>
+                    CRYPTOWEALTH PRO
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" onclick="switchTab('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#" onclick="switchTab('autopool')"><i class="fas fa-sitemap"></i> Auto Pool</a></li>
+                    <li><a href="#" onclick="switchTab('income')"><i class="fas fa-chart-line"></i> Income Plans</a></li>
+                    <li><a href="#" onclick="switchTab('network')"><i class="fas fa-users"></i> Network</a></li>
+                    <li><a href="#" onclick="switchTab('tracking')"><i class="fas fa-satellite"></i> Live Tracking</a></li>
+                    <li><a href="#" id="marketBtn"><i class="fas fa-chart-bar"></i> Market Chat</a></li>
+                    <li><a href="#" onclick="openDepositModal()"><i class="fas fa-plus-circle"></i> Deposit</a></li>
+                </ul>
+
+                <div class="user-section">
+                    <div class="user-avatar" onclick="switchTab('profile')">
+                        <span id="userInitial">U</span>
+                    </div>
+                    <div class="notification-badge" id="notificationBadge">3</div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Market Ticker -->
+    <div class="market-ticker">
+        <div class="ticker-content" id="tickerContent">
+            <!-- Crypto prices will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="dashboard-header" style="margin-bottom: 2rem;">
+                <div>
+                    <h1 class="glow-text" id="welcomeMessage">Welcome to CryptoWealth Pro</h1>
+                    <p id="userInfo">Loading your dashboard...</p>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn btn-success" onclick="openDepositModal()">
+                        <i class="fas fa-plus"></i> Quick Deposit
+                    </button>
+                    <button class="btn btn-purple" onclick="showReferralModal()">
+                        <i class="fas fa-share-alt"></i> Invite & Earn
+                    </button>
+                </div>
+            </div>
+
+            <!-- Real-time Stats -->
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-value" id="balanceAmount">0.0000 BTC</div>
+                    <div class="stat-label">Total Balance</div>
+                    <div class="stat-sub">≈ $0.00 USD</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-value" id="todayEarnings">+0.0000 BTC</div>
+                    <div class="stat-label">Today's Earnings</div>
+                    <div class="stat-sub">Live updating</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-value" id="totalReferrals">0</div>
+                    <div class="stat-label">Active Referrals</div>
+                    <div class="stat-sub">Across 7 levels</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-value" id="userRank">Bronze</div>
+                    <div class="stat-label">Current Rank</div>
+                    <div class="stat-sub">Level up available</div>
+                </div>
+            </div>
+
+            <!-- Real-time Graph -->
+            <div class="realtime-graph">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3><i class="fas fa-wave-square"></i> Earnings Growth (24H)</h3>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-small" onclick="updateGraph('24h')">24H</button>
+                        <button class="btn btn-small" onclick="updateGraph('7d')">7D</button>
+                        <button class="btn btn-small" onclick="updateGraph('30d')">30D</button>
+                    </div>
+                </div>
+                <div class="graph-container" id="graphContainer">
+                    <canvas id="earningsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Overview</button>
+                <button class="tab-btn" data-tab="autopool"><i class="fas fa-sitemap"></i> Auto Pool System</button>
+                <button class="tab-btn" data-tab="income"><i class="fas fa-money-check-alt"></i> Income Plans</button>
+                <button class="tab-btn" data-tab="network"><i class="fas fa-network-wired"></i> Network</button>
+                <button class="tab-btn" data-tab="tracking"><i class="fas fa-satellite-dish"></i> Live Tracking</button>
+                <button class="tab-btn" data-tab="transactions"><i class="fas fa-exchange-alt"></i> Transactions</button>
+                <button class="tab-btn" data-tab="profile"><i class="fas fa-user-cog"></i> Profile</button>
+            </div>
+
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                    <div>
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentActivity">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3><i class="fas fa-bell"></i> Notifications</h3>
+                        <div id="notificationsList" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; max-height: 300px; overflow-y: auto;">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auto Pool Tab -->
+            <div id="autopool" class="tab-content">
+                <h2><i class="fas fa-sitemap"></i> Auto Pool Matrix System</h2>
+                <p>Automatically earn from our forced matrix pools. Each completion unlocks the next level.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="stat-card" style="text-align: center;">
+                        <div class="stat-icon">
+                            <i class="fas fa-swimming-pool"></i>
+                        </div>
+                        <h3>Pool 1</h3>
+                        <div class="stat-value">2x2</div>
+                        <div class="stat-label">Matrix Size</div>
+                        <div style="margin: 1rem 0;">
+                            <div>Reward: <span class="stat-value">0.005 BTC</span></div>
+                            <div>Slots: <span id="pool1Slots">4/4</span></div>
+                        </div>
+                        <button class="btn btn-success" onclick="joinPool(1)">Join Pool 1</button>
+                    </div>
+
+                    <div class="stat-card" style="text-align: center;">
+                        <div class="stat-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3>Pool 2</h3>
+                        <div class="stat-value">3x3</div>
+                        <div class="stat-label">Matrix Size</div>
+                        <div style="margin: 1rem 0;">
+                            <div>Reward: <span class="stat-value">0.015 BTC</span></div>
+                            <div>Slots: <span id="pool2Slots">3/9</span></div>
+                        </div>
+                        <button class="btn" onclick="joinPool(2)" id="pool2Btn">Join Pool 2</button>
+                    </div>
+
+                    <div class="stat-card" style="text-align: center;">
+                        <div class="stat-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Pool 3</h3>
+                        <div class="stat-value">4x4</div>
+                        <div class="stat-label">Matrix Size</div>
+                        <div style="margin: 1rem 0;">
+                            <div>Reward: <span class="stat-value">0.05 BTC</span></div>
+                            <div>Slots: <span id="pool3Slots">0/16</span></div>
+                        </div>
+                        <button class="btn" onclick="joinPool(3)" id="pool3Btn" disabled>Locked</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Income Plans Tab -->
+            <div id="income" class="tab-content">
+                <h2><i class="fas fa-money-check-alt"></i> Investment Plans</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Starter Plan</h3>
+                        <div class="stat-value">5% Daily</div>
+                        <div class="stat-label">For 30 Days</div>
+                        <div style="margin: 1.5rem 0;">
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> Minimum: 0.01 BTC</p>
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> 2 Level Referral Bonus</p>
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> Basic Support</p>
+                        </div>
+                        <button class="btn" onclick="selectPlan('starter')">Invest Now</button>
+                    </div>
+
+                    <div class="stat-card glow-box">
+                        <div class="stat-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Pro Plan</h3>
+                        <div class="stat-value">7% Daily</div>
+                        <div class="stat-label">For 45 Days</div>
+                        <div style="margin: 1.5rem 0;">
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> Minimum: 0.05 BTC</p>
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> 5 Level Referral Bonus</p>
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> Priority Support</p>
+                        </div>
+                        <button class="btn btn-warning" onclick="selectPlan('pro')">Invest Now</button>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>VIP Plan</h3>
+                        <div class="stat-value">10% Daily</div>
+                        <div class="stat-label">For 60 Days</div>
+                        <div style="margin: 1.5rem 0;">
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> Minimum: 0.1 BTC</p>
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> 7 Level Referral Bonus</p>
+                            <p><i class="fas fa-check" style="color: var(--success);"></i> VIP 24/7 Support</p>
+                        </div>
+                        <button class="btn" onclick="selectPlan('vip')">Invest Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Tab -->
+            <div id="network" class="tab-content">
+                <h2><i class="fas fa-network-wired"></i> Your Network Tree</h2>
+                
+                <div class="network-tree">
+                    <div class="tree-level">
+                        <div class="tree-node pulse">
+                            <div>YOU</div>
+                            <small>Level 1</small>
+                        </div>
+                    </div>
+                    <div class="tree-level">
+                        <div class="tree-node" onclick="showUserDetails('user1')">
+                            <div>User 1</div>
+                            <small>Active</small>
+                        </div>
+                        <div class="tree-node" onclick="showUserDetails('user2')">
+                            <div>User 2</div>
+                            <small>Active</small>
+                        </div>
+                    </div>
+                    <div class="tree-level">
+                        <div class="tree-node" onclick="showUserDetails('user3')">
+                            <div>User 3</div>
+                            <small>Active</small>
+                        </div>
+                        <div class="tree-node" onclick="showUserDetails('user4')">
+                            <div>User 4</div>
+                            <small>Active</small>
+                        </div>
+                        <div class="tree-node" onclick="showUserDetails('user5')">
+                            <div>User 5</div>
+                            <small>New</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3><i class="fas fa-link"></i> Your Referral Link</h3>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <input type="text" class="form-control" id="referralLink" value="https://cryptowealth.pro/ref/ABC123" readonly>
+                        <button class="btn" onclick="copyReferralLink()"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Tracking Tab -->
+            <div id="tracking" class="tab-content">
+                <h2><i class="fas fa-satellite-dish"></i> Live Earning Tracking</h2>
+                
+                <div class="live-tracking">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3><i class="fas fa-chart-line"></i> Real-time Earnings</h3>
+                        <div class="stat-value" id="liveEarnings">+0.0000 BTC</div>
+                    </div>
+
+                    <div class="tracking-grid">
+                        <div class="tracking-item">
+                            <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                            <div class="stat-value" id="directRefEarnings">0.0012</div>
+                            <div class="stat-label">Direct Referrals</div>
+                        </div>
+                        <div class="tracking-item">
+                            <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="stat-value" id="levelEarnings">0.0035</div>
+                            <div class="stat-label">Level Earnings</div>
+                        </div>
+                        <div class="tracking-item">
+                            <div class="stat-icon"><i class="fas fa-swimming-pool"></i></div>
+                            <div class="stat-value" id="poolEarnings">0.0020</div>
+                            <div class="stat-label">Pool Earnings</div>
+                        </div>
+                        <div class="tracking-item">
+                            <div class="stat-icon"><i class="fas fa-gift"></i></div>
+                            <div class="stat-value" id="bonusEarnings">0.0005</div>
+                            <div class="stat-label">Bonuses</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0,255,157,0.1); border-radius: 12px;">
+                        <h4><i class="fas fa-bolt"></i> Live Updates</h4>
+                        <div id="liveUpdates" style="max-height: 200px; overflow-y: auto; margin-top: 1rem;">
+                            <!-- Live updates will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions Tab -->
+            <div id="transactions" class="tab-content">
+                <h2><i class="fas fa-exchange-alt"></i> Transaction History</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h3><i class="fas fa-arrow-down"></i> Deposits</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="depositsTable">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3><i class="fas fa-arrow-up"></i> Withdrawals</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="withdrawalsTable">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content">
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+                    <div>
+                        <div class="stat-card" style="text-align: center;">
+                            <div class="user-avatar" style="width: 100px; height: 100px; margin: 0 auto 1rem;">
+                                <span id="profileInitial">U</span>
+                            </div>
+                            <h3 id="profileName">User Name</h3>
+                            <p id="profileEmail">user@email.com</p>
+                            <div style="margin: 1rem 0;">
+                                <p>Member Since: <span id="joinDate">2023</span></p>
+                                <p>Referral Code: <strong id="referralCode">ABC123</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3><i class="fas fa-cog"></i> Account Settings</h3>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" id="settingsName">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" id="settingsEmail">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" id="settingsPhone">
+                        </div>
+                        <button class="btn" onclick="saveProfile()">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Deposit Modal -->
+    <div class="deposit-modal" id="depositModal">
+        <div class="deposit-content">
+            <button class="close-modal" onclick="closeDepositModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="glow-text"><i class="fas fa-plus-circle"></i> Deposit Funds</h2>
+            <p>Choose your preferred payment method</p>
+            
+            <div class="form-group">
+                <label>Amount (BTC)</label>
+                <input type="number" class="form-control" id="depositAmount" placeholder="0.01" min="0.01" step="0.001">
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-method active" data-method="btc" onclick="selectPaymentMethod('btc')">
+                    <i class="fab fa-bitcoin" style="font-size: 2rem; color: #f7931a;"></i>
+                    <div>Bitcoin</div>
+                </div>
+                <div class="payment-method" data-method="eth" onclick="selectPaymentMethod('eth')">
+                    <i class="fab fa-ethereum" style="font-size: 2rem; color: #627eea;"></i>
+                    <div>Ethereum</div>
+                </div>
+                <div class="payment-method" data-method="usdt" onclick="selectPaymentMethod('usdt')">
+                    <i class="fas fa-coins" style="font-size: 2rem; color: #26a17b;"></i>
+                    <div>USDT</div>
+                </div>
+            </div>
+            
+            <div id="paymentDetails" style="margin-top: 2rem;">
+                <div class="form-group">
+                    <label>Bitcoin Wallet Address</label>
+                    <input type="text" class="form-control" value="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" readonly>
+                </div>
+                <div style="background: rgba(0,255,157,0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <p><i class="fas fa-info-circle"></i> Send exact amount to this address. Deposit will be credited after 3 confirmations.</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-success" style="width: 100%; margin-top: 2rem;" onclick="processDeposit()">
+                <i class="fas fa-paper-plane"></i> Generate Payment Request
+            </button>
+        </div>
+    </div>
+
+    <!-- Crypto Chat -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3 style="margin: 0;"><i class="fas fa-comments"></i> Crypto Market Chat</h3>
+            <button class="btn btn-small" onclick="closeChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <strong>Market Bot:</strong> Welcome to Crypto Market Chat! Here you can discuss market trends and get real-time updates.
+            </div>
+            <div class="message bot">
+                <strong>Market Bot:</strong> BTC is currently at $42,150 (+2.3% today)
+            </div>
+            <div class="message user">
+                <strong>You:</strong> What's the outlook for ETH this week?
+            </div>
+            <div class="message bot">
+                <strong>Market Bot:</strong> ETH showing strong support at $2,200. Expected to test $2,500 resistance.
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button class="btn" onclick="sendChatMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo">
+                        <i class="fas fa-bolt"></i>
+                        CRYPTOWEALTH PRO
+                    </div>
+                    <p style="margin-top: 1rem; color: #a0a0c0;">Advanced Cryptocurrency MLM Platform with Auto Pool System</p>
+                </div>
+                
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li><a href="#" style="color: #a0a0c0; text-decoration: none;">Dashboard</a></li>
+                        <li><a href="#" style="color: #a0a0c0; text-decoration: none;">Income Plans</a></li>
+                        <li><a href="#" style="color: #a0a0c0; text-decoration: none;">Network</a></li>
+                        <li><a href="#" style="color: #a0a0c0; text-decoration: none;">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Contact</h4>
+                    <p style="margin-top: 1rem; color: #a0a0c0;">
+                        <i class="fas fa-envelope"></i> support@cryptowealth.pro<br>
+                        <i class="fas fa-globe"></i> cryptowealth.pro
+                    </p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>© 2023 CryptoWealth Pro. All rights reserved.</p>
+                <p style="font-size: 0.9rem; color: #a0a0c0;">Cryptocurrency investments involve risk. Please invest responsibly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ====================
+        // APPLICATION STATE
+        // ====================
+        let currentUser = {
+            id: 'USER001',
+            name: 'John Doe',
+            email: 'john@example.com',
+            phone: '+1234567890',
+            balance: 0.0256,
+            totalEarnings: 0.1425,
+            referrals: 8,
+            rank: 'Silver',
+            level: 3,
+            referralCode: 'CRYPTO123',
+            joinDate: '2023-10-01',
+            activePlans: ['pro'],
+            joinedPools: [1]
+        };
+
+        let liveEarnings = 0.0000;
+        let cryptoPrices = {};
+        let selectedPaymentMethod = 'btc';
+        let chatActive = false;
+
+        // ====================
+        // INITIALIZATION
+        // ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize UI
+            updateDashboard();
+            initializeMarketTicker();
+            initializeChart();
+            setupEventListeners();
+            
+            // Start real-time updates
+            startRealtimeUpdates();
+            simulateLiveEarnings();
+            
+            // Load saved data
+            loadUserData();
+            
+            // Update every 5 seconds
+            setInterval(updateRealtimeData, 5000);
+        });
+
+        // ====================
+        // UI FUNCTIONS
+        // ====================
+        function updateDashboard() {
+            // Update welcome message
+            document.getElementById('welcomeMessage').textContent = `Welcome, ${currentUser.name.split(' ')[0]}!`;
+            document.getElementById('userInfo').textContent = `${currentUser.rank} Member | Level ${currentUser.level}`;
+            
+            // Update stats
+            document.getElementById('balanceAmount').textContent = currentUser.balance.toFixed(4) + ' BTC';
+            document.getElementById('todayEarnings').textContent = '+0.0012 BTC';
+            document.getElementById('totalReferrals').textContent = currentUser.referrals;
+            document.getElementById('userRank').textContent = currentUser.rank;
+            
+            // Update user initial
+            const initial = currentUser.name.charAt(0).toUpperCase();
+            document.getElementById('userInitial').textContent = initial;
+            document.getElementById('profileInitial').textContent = initial;
+            
+            // Update profile
+            document.getElementById('profileName').textContent = currentUser.name;
+            document.getElementById('profileEmail').textContent = currentUser.email;
+            document.getElementById('joinDate').textContent = currentUser.joinDate;
+            document.getElementById('referralCode').textContent = currentUser.referralCode;
+            
+            // Update settings form
+            document.getElementById('settingsName').value = currentUser.name;
+            document.getElementById('settingsEmail').value = currentUser.email;
+            document.getElementById('settingsPhone').value = currentUser.phone;
+            
+            // Update referral link
+            document.getElementById('referralLink').value = `https://cryptowealth.pro/ref/${currentUser.referralCode}`;
+            
+            // Update tables
+            updateActivityTable();
+            updateTransactionTables();
+        }
+
+        function switchTab(tabId) {
+            // Update active tab button
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-tab') === tabId) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update active tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+                if (content.id === tabId) {
+                    content.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        // ====================
+        // MARKET TICKER
+        // ====================
+        function initializeMarketTicker() {
+            cryptoPrices = {
+                btc: { price: 42150, change: 2.3 },
+                eth: { price: 2250, change: 1.8 },
+                bnb: { price: 305, change: -0.5 },
+                xrp: { price: 0.62, change: 3.2 },
+                ada: { price: 0.45, change: 1.5 },
+                sol: { price: 95, change: 5.7 },
+                doge: { price: 0.085, change: -1.2 },
+                dot: { price: 6.8, change: 2.1 }
+            };
+            
+            updateTicker();
+        }
+
+        function updateTicker() {
+            const tickerContent = document.getElementById('tickerContent');
+            let html = '';
+            
+            for (const [symbol, data] of Object.entries(cryptoPrices)) {
+                const changeClass = data.change >= 0 ? 'positive' : 'negative';
+                const changeSign = data.change >= 0 ? '+' : '';
+                
+                html += `
+                    <div class="crypto-price">
+                        <strong>${symbol.toUpperCase()}</strong>
+                        <span class="price">$${data.price.toLocaleString()}</span>
+                        <span class="change ${changeClass}">${changeSign}${data.change}%</span>
+                    </div>
+                `;
+            }
+            
+            tickerContent.innerHTML = html;
+        }
+
+        // ====================
+        // REAL-TIME UPDATES
+        // ====================
+        function startRealtimeUpdates() {
+            // Update crypto prices every 10 seconds
+            setInterval(() => {
+                for (const symbol in cryptoPrices) {
+                    const change = (Math.random() - 0.5) * 2;
+                    cryptoPrices[symbol].price += cryptoPrices[symbol].price * (change / 100);
+                    cryptoPrices[symbol].change = parseFloat((cryptoPrices[symbol].change + change).toFixed(2));
+                }
+                updateTicker();
+            }, 10000);
+            
+            // Update live earnings
+            setInterval(() => {
+                const earningsChange = Math.random() * 0.0001;
+                liveEarnings += earningsChange;
+                document.getElementById('liveEarnings').textContent = `+${liveEarnings.toFixed(4)} BTC`;
+            }, 3000);
+        }
+
+        function updateRealtimeData() {
+            // Simulate real-time data updates
+            const earningsChange = Math.random() * 0.00001;
+            currentUser.balance += earningsChange;
+            currentUser.totalEarnings += earningsChange;
+            
+            updateDashboard();
+            
+            // Add live update
+            addLiveUpdate(`New earnings: +${earningsChange.toFixed(6)} BTC`);
+        }
+
+        function addLiveUpdate(message) {
+            const updatesDiv = document.getElementById('liveUpdates');
+            const timestamp = new Date().toLocaleTimeString();
+            const updateElement = document.createElement('div');
+            updateElement.innerHTML = `<strong>${timestamp}:</strong> ${message}`;
+            updateElement.style.padding = '0.5rem';
+            updateElement.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+            
+            updatesDiv.prepend(updateElement);
+            
+            // Limit to 10 updates
+            if (updatesDiv.children.length > 10) {
+                updatesDiv.removeChild(updatesDiv.lastChild);
+            }
+        }
+
+        function simulateLiveEarnings() {
+            // Simulate different types of earnings
+            setInterval(() => {
+                // Direct referrals
+                const directRefEarnings = Math.random() * 0.0005;
+                document.getElementById('directRefEarnings').textContent = directRefEarnings.toFixed(4);
+                
+                // Level earnings
+                const levelEarnings = Math.random() * 0.001;
+                document.getElementById('levelEarnings').textContent = levelEarnings.toFixed(4);
+                
+                // Pool earnings
+                const poolEarnings = Math.random() * 0.0008;
+                document.getElementById('poolEarnings').textContent = poolEarnings.toFixed(4);
+                
+                // Bonus earnings
+                const bonusEarnings = Math.random() * 0.0002;
+                document.getElementById('bonusEarnings').textContent = bonusEarnings.toFixed(4);
+            }, 5000);
+        }
+
+        // ====================
+        // DEPOSIT SYSTEM
+        // ====================
+        function openDepositModal() {
+            document.getElementById('depositModal').classList.add('active');
+        }
+
+        function closeDepositModal() {
+            document.getElementById('depositModal').classList.remove('active');
+        }
+
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            
+            // Update UI
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelector(`.payment-method[data-method="${method}"]`).classList.add('active');
+            
+            // Update payment details
+            const paymentDetails = document.getElementById('paymentDetails');
+            const addresses = {
+                btc: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
+                eth: '0x742d35Cc6634C0532925a3b844Bc9e0F3A5C3a2E',
+                usdt: 'TY6b6sVX3K5Qk8F4Gt2Jh7D9L1M3N5P7R9'
+            };
+            
+            const methodNames = {
+                btc: 'Bitcoin',
+                eth: 'Ethereum',
+                usdt: 'USDT (TRC20)'
+            };
+            
+            paymentDetails.innerHTML = `
+                <div class="form-group">
+                    <label>${methodNames[method]} Wallet Address</label>
+                    <input type="text" class="form-control" value="${addresses[method]}" readonly>
+                </div>
+                <div style="background: rgba(0,255,157,0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <p><i class="fas fa-info-circle"></i> Send exact amount to this address. Deposit will be credited after 3 confirmations.</p>
+                    <p><strong>Minimum deposit:</strong> ${method === 'usdt' ? '10 USDT' : '0.01 BTC/ETH'}</p>
+                </div>
+            `;
+        }
+
+        function processDeposit() {
+            const amount = parseFloat(document.getElementById('depositAmount').value);
+            
+            if (!amount || amount < 0.01) {
+                alert('Minimum deposit is 0.01 BTC');
+                return;
+            }
+            
+            // Generate QR code
+            const addresses = {
+                btc: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
+                eth: '0x742d35Cc6634C0532925a3b844Bc9e0F3A5C3a2E',
+                usdt: 'TY6b6sVX3K5Qk8F4Gt2Jh7D9L1M3N5P7R9'
+            };
+            
+            const methodNames = {
+                btc: 'Bitcoin',
+                eth: 'Ethereum',
+                usdt: 'USDT'
+            };
+            
+            alert(`Send ${amount} ${methodNames[selectedPaymentMethod]} to:\n\n${addresses[selectedPaymentMethod]}\n\nAfter 3 confirmations, your deposit will be credited automatically.`);
+            
+            // Add to transactions
+            addTransaction('deposit', amount, selectedPaymentMethod.toUpperCase(), 'Pending');
+            
+            closeDepositModal();
+        }
+
+        // ====================
+        // AUTO POOL SYSTEM
+        // ====================
+        function joinPool(poolNumber) {
+            const poolCosts = [0, 0.005, 0.015, 0.05];
+            const cost = poolCosts[poolNumber];
+            
+            if (currentUser.balance < cost) {
+                alert(`Insufficient balance. You need ${cost} BTC to join Pool ${poolNumber}.`);
+                return;
+            }
+            
+            if (confirm(`Join Pool ${poolNumber} for ${cost} BTC?`)) {
+                currentUser.balance -= cost;
+                if (!currentUser.joinedPools.includes(poolNumber)) {
+                    currentUser.joinedPools.push(poolNumber);
+                }
+                
+                // Update pool slots
+                const slotElements = {
+                    1: 'pool1Slots',
+                    2: 'pool2Slots',
+                    3: 'pool3Slots'
+                };
+                
+                const currentSlotText = document.getElementById(slotElements[poolNumber]).textContent;
+                const [current, total] = currentSlotText.split('/').map(Number);
+                document.getElementById(slotElements[poolNumber]).textContent = `${current + 1}/${total}`;
+                
+                // Unlock next pool if needed
+                if (poolNumber === 1 && current + 1 >= 4) {
+                    document.getElementById('pool2Btn').disabled = false;
+                    document.getElementById('pool2Btn').className = 'btn btn-warning';
+                    document.getElementById('pool2Btn').textContent = 'Join Pool 2';
+                }
+                
+                if (poolNumber === 2 && current + 1 >= 9) {
+                    document.getElementById('pool3Btn').disabled = false;
+                    document.getElementById('pool3Btn').className = 'btn btn-success';
+                    document.getElementById('pool3Btn').textContent = 'Join Pool 3';
+                }
+                
+                updateDashboard();
+                alert(`Successfully joined Pool ${poolNumber}!`);
+                
+                // Add activity
+                addActivity(`Joined Pool ${poolNumber}`, -cost, 'BTC', 'Pool investment');
+            }
+        }
+
+        // ====================
+        // INCOME PLANS
+        // ====================
+        function selectPlan(plan) {
+            const planCosts = {
+                starter: 0.01,
+                pro: 0.05,
+                vip: 0.1
+            };
+            
+            const planNames = {
+                starter: 'Starter Plan',
+                pro: 'Pro Plan',
+                vip: 'VIP Plan'
+            };
+            
+            const cost = planCosts[plan];
+            
+            if (currentUser.balance < cost) {
+                alert(`Insufficient balance. You need ${cost} BTC to activate the ${planNames[plan]}.`);
+                return;
+            }
+            
+            if (confirm(`Activate ${planNames[plan]} for ${cost} BTC? You will earn ${plan === 'starter' ? '5%' : plan === 'pro' ? '7%' : '10%'} daily for ${plan === 'starter' ? '30' : plan === 'pro' ? '45' : '60'} days.`)) {
+                currentUser.balance -= cost;
+                updateDashboard();
+                
+                alert(`${planNames[plan]} activated successfully! Daily earnings will start accruing immediately.`);
+                
+                // Add activity
+                addActivity(`Plan: ${planNames[plan]}`, -cost, 'BTC', 'Plan activation');
+            }
+        }
+
+        // ====================
+        // CRYPTO CHAT
+        // ====================
+        document.getElementById('marketBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleChat();
+        });
+
+        function toggleChat() {
+            const chatContainer = document.getElementById('chatContainer');
+            chatActive = !chatActive;
+            
+            if (chatActive) {
+                chatContainer.classList.add('active');
+            } else {
+                chatContainer.classList.remove('active');
+            }
+        }
+
+        function closeChat() {
+            document.getElementById('chatContainer').classList.remove('active');
+            chatActive = false;
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const chatMessages = document.getElementById('chatMessages');
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message user';
+                messageElement.innerHTML = `<strong>You:</strong> ${message}`;
+                chatMessages.appendChild(messageElement);
+                
+                // Auto-reply
+                setTimeout(() => {
+                    const replies = [
+                        "Interesting point! What's your take on the current market trend?",
+                        "That's a good question. Let me check the latest market data...",
+                        "Based on current indicators, we're seeing bullish momentum in altcoins.",
+                        "Have you considered diversifying into DeFi tokens?",
+                        "The market is showing strong support at current levels."
+                    ];
+                    
+                    const reply = replies[Math.floor(Math.random() * replies.length)];
+                    const replyElement = document.createElement('div');
+                    replyElement.className = 'message bot';
+                    replyElement.innerHTML = `<strong>Market Bot:</strong> ${reply}`;
+                    chatMessages.appendChild(replyElement);
+                    
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+                
+                input.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        // ====================
+        // HELPER FUNCTIONS
+        // ====================
+        function setupEventListeners() {
+            // Mobile menu
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('navLinks').classList.toggle('active');
+            });
+            
+            // Tab switching
+            document.querySelectorAll('.tab-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+            
+            // Chat input enter key
+            document.getElementById('chatInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendChatMessage();
+                }
+            });
+        }
+
+        function initializeChart() {
+            const ctx = document.getElementById('earningsChart').getContext('2d');
+            
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(0, 'rgba(0, 255, 157, 0.8)');
+            gradient.addColorStop(1, 'rgba(0, 255, 157, 0.1)');
+            
+            // Sample data
+            const data = {
+                labels: Array.from({length: 24}, (_, i) => `${i}:00`),
+                datasets: [{
+                    label: 'Earnings (BTC)',
+                    data: Array.from({length: 24}, () => Math.random() * 0.001),
+                    borderColor: '#00ff9d',
+                    backgroundColor: gradient,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#00ff9d',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2
+                }]
+            };
+            
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#a0a0c0'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#a0a0c0',
+                                maxTicksLimit: 12
+                            }
+                        }
+                    }
+                }
+            };
+            
+            new Chart(ctx, config);
+        }
+
+        function updateGraph(range) {
+            // In a real app, this would fetch new data based on the range
+            alert(`Graph updated to show ${range} data`);
+        }
+
+        function copyReferralLink() {
+            const linkInput = document.getElementById('referralLink');
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            alert('Referral link copied to clipboard!');
+        }
+
+        function showUserDetails(userId) {
+            alert(`Showing details for ${userId}`);
+        }
+
+        function showReferralModal() {
+            const link = document.getElementById('referralLink').value;
+            alert(`Your referral link:\n\n${link}\n\nShare this link to earn 10% commission on all referrals!`);
+        }
+
+        function updateActivityTable() {
+            const activities = [
+                { time: '10:30', type: 'Referral Bonus', amount: '0.0005 BTC', status: 'Completed' },
+                { time: '09:45', type: 'Pool Earnings', amount: '0.0012 BTC', status: 'Completed' },
+                { time: 'Yesterday', type: 'Withdrawal', amount: '0.01 BTC', status: 'Processing' },
+                { time: 'Yesterday', type: 'Deposit', amount: '0.05 BTC', status: 'Completed' },
+                { time: '2 days ago', type: 'Level Bonus', amount: '0.0008 BTC', status: 'Completed' }
+            ];
+            
+            let html = '';
+            activities.forEach(activity => {
+                html += `
+                    <tr>
+                        <td>${activity.time}</td>
+                        <td>${activity.type}</td>
+                        <td>${activity.amount}</td>
+                        <td><span style="color: ${activity.status === 'Completed' ? '#00ff88' : '#ffaa00'}">${activity.status}</span></td>
+                    </tr>
+                `;
+            });
+            
+            document.getElementById('recentActivity').innerHTML = html;
+        }
+
+        function updateTransactionTables() {
+            const deposits = [
+                { date: '2023-11-15', amount: '0.05 BTC', status: 'Completed' },
+                { date: '2023-11-10', amount: '0.02 BTC', status: 'Completed' },
+                { date: '2023-11-05', amount: '0.1 BTC', status: 'Completed' }
+            ];
+            
+            const withdrawals = [
+                { date: '2023-11-12', amount: '0.01 BTC', status: 'Processing' },
+                { date: '2023-11-08', amount: '0.005 BTC', status: 'Completed' }
+            ];
+            
+            let depositsHtml = '';
+            deposits.forEach(deposit => {
+                depositsHtml += `
+                    <tr>
+                        <td>${deposit.date}</td>
+                        <td>${deposit.amount}</td>
+                        <td><span style="color: #00ff88">${deposit.status}</span></td>
+                    </tr>
+                `;
+            });
+            
+            let withdrawalsHtml = '';
+            withdrawals.forEach(withdrawal => {
+                withdrawalsHtml += `
+                    <tr>
+                        <td>${withdrawal.date}</td>
+                        <td>${withdrawal.amount}</td>
+                        <td><span style="color: ${withdrawal.status === 'Completed' ? '#00ff88' : '#ffaa00'}">${withdrawal.status}</span></td>
+                    </tr>
+                `;
+            });
+            
+            document.getElementById('depositsTable').innerHTML = depositsHtml;
+            document.getElementById('withdrawalsTable').innerHTML = withdrawalsHtml;
+        }
+
+        function addActivity(type, amount, currency, description) {
+            // In a real app, this would save to a database
+            console.log(`Activity: ${type} - ${amount} ${currency} - ${description}`);
+        }
+
+        function addTransaction(type, amount, currency, status) {
+            // In a real app, this would save to a database
+            console.log(`Transaction: ${type} - ${amount} ${currency} - ${status}`);
+        }
+
+        function saveProfile() {
+            const name = document.getElementById('settingsName').value;
+            const email = document.getElementById('settingsEmail').value;
+            const phone = document.getElementById('settingsPhone').value;
+            
+            currentUser.name = name;
+            currentUser.email = email;
+            currentUser.phone = phone;
+            
+            updateDashboard();
+            alert('Profile updated successfully!');
+        }
+
+        function loadUserData() {
+            // In a real app, this would load from localStorage or API
+            console.log('Loading user data...');
+        }
+
+        // Initialize payment method
+        selectPaymentMethod('btc');
+    </script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
