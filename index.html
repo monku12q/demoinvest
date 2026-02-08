@@ -1381,49 +1381,24 @@
             border: 3px solid var(--secondary);
         }
 
-        /* Admin Panel */
-        .admin-panel {
+        /* Cookie Consent */
+        .cookie-consent {
             position: fixed;
-            top: 80px;
-            right: 0;
-            width: 300px;
-            height: calc(100vh - 80px);
+            bottom: 20px;
+            right: 20px;
             background: var(--card-bg);
-            border-left: 1px solid rgba(255, 55, 95, 0.3);
-            z-index: 901;
-            overflow-y: auto;
-            padding: 1.5rem;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            padding: 1rem;
+            max-width: 350px;
+            z-index: 9998;
+            box-shadow: var(--shadow);
+            display: none;
         }
 
-        .admin-panel.active {
-            transform: translateX(0);
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 55, 95, 0.3);
-        }
-
-        .admin-close-btn {
-            background: none;
-            border: none;
-            color: var(--danger);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-
-        .admin-close-btn:hover {
-            background: rgba(255, 55, 95, 0.2);
+        .cookie-consent.active {
+            display: block;
+            animation: slideUp 0.3s ease;
         }
 
         /* Responsive */
@@ -1438,10 +1413,6 @@
             }
             
             .profile-sidebar {
-                width: 250px;
-            }
-            
-            .admin-panel {
                 width: 250px;
             }
         }
@@ -1474,11 +1445,6 @@
             }
             
             .profile-sidebar {
-                width: 100%;
-                transform: translateX(100%);
-            }
-            
-            .admin-panel {
                 width: 100%;
                 transform: translateX(100%);
             }
@@ -1766,19 +1732,6 @@
             background: var(--secondary);
             border-radius: 3px;
         }
-        
-        /* Admin Badge */
-        .admin-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--danger);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.6rem;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -1787,6 +1740,20 @@
         <div class="loader"></div>
         <h2>Loading CryptoWealth Pro</h2>
         <p>Connecting to secure network...</p>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent" id="cookieConsent">
+        <h4><i class="fas fa-cookie-bite"></i> Cookie Consent</h4>
+        <p style="font-size: 0.9rem; margin: 0.5rem 0;">We use cookies to enhance your experience and track referral codes.</p>
+        <div style="display: flex; gap: 0.5rem; margin-top: 0.8rem;">
+            <button class="btn btn-small" onclick="acceptCookies()">
+                <i class="fas fa-check"></i> Accept
+            </button>
+            <button class="btn btn-small btn-danger" onclick="declineCookies()">
+                <i class="fas fa-times"></i> Decline
+            </button>
+        </div>
     </div>
 
     <!-- Header with Login/Signup Buttons -->
@@ -1819,9 +1786,8 @@
                 </ul>
 
                 <div class="user-section" id="userSection" style="display: none;">
-                    <div class="user-avatar" onclick="toggleProfileSidebar()" id="userAvatar" style="position: relative;">
+                    <div class="user-avatar" onclick="toggleProfileSidebar()" id="userAvatar">
                         U
-                        <div class="admin-badge" id="adminBadge" style="display: none;">ADMIN</div>
                     </div>
                     <button class="btn btn-small btn-danger" onclick="logout()">
                         <i class="fas fa-sign-out-alt"></i> Logout
@@ -1830,103 +1796,6 @@
             </nav>
         </div>
     </header>
-
-    <!-- Admin Panel -->
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-header">
-            <h3 style="margin: 0; font-size: 1.2rem; color: var(--danger);"><i class="fas fa-user-shield"></i> Admin Panel</h3>
-            <button class="admin-close-btn" onclick="toggleAdminPanel()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div style="margin-bottom: 1.5rem;">
-            <h4 style="margin-bottom: 0.8rem; font-size: 1rem; color: var(--danger);"><i class="fas fa-cog"></i> System Settings</h4>
-            <div style="background: rgba(255, 55, 95, 0.1); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
-                <div class="form-group">
-                    <label>Earning Start Time (Hours)</label>
-                    <input type="number" class="form-control" id="earningStartTime" placeholder="24" min="1" max="168">
-                    <small style="color: #a0a0c0;">After investment, earnings will start after this time</small>
-                </div>
-                
-                <div class="form-group">
-                    <label>Earning Interval (Minutes)</label>
-                    <input type="number" class="form-control" id="earningInterval" placeholder="1440" min="1" max="10080">
-                    <small style="color: #a0a0c0;">How often earnings are added (1440 = daily)</small>
-                </div>
-                
-                <div class="form-group">
-                    <label>Withdrawal Processing Time (Hours)</label>
-                    <input type="number" class="form-control" id="withdrawalProcessingTime" placeholder="24" min="1" max="72">
-                </div>
-                
-                <button class="btn btn-danger" style="width: 100%; margin-top: 0.5rem;" onclick="saveSystemSettings()">
-                    <i class="fas fa-save"></i> Save Settings
-                </button>
-            </div>
-        </div>
-        
-        <div style="margin-bottom: 1.5rem;">
-            <h4 style="margin-bottom: 0.8rem; font-size: 1rem; color: var(--danger);"><i class="fas fa-users"></i> User Management</h4>
-            <div style="background: rgba(255, 55, 95, 0.1); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
-                <div class="form-group">
-                    <label>User ID</label>
-                    <input type="text" class="form-control" id="adminUserId" placeholder="Enter user ID">
-                </div>
-                
-                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-                    <button class="btn btn-small" style="flex: 1;" onclick="adminGetUserData()">
-                        <i class="fas fa-search"></i> Find
-                    </button>
-                    <button class="btn btn-small btn-danger" style="flex: 1;" onclick="adminUpdateUserBalance()">
-                        <i class="fas fa-dollar-sign"></i> Update Balance
-                    </button>
-                </div>
-                
-                <div id="adminUserInfo" style="margin-top: 0.8rem; display: none;">
-                    <!-- User info will be shown here -->
-                </div>
-            </div>
-        </div>
-        
-        <div style="margin-bottom: 1.5rem;">
-            <h4 style="margin-bottom: 0.8rem; font-size: 1rem; color: var(--danger);"><i class="fas fa-money-check-alt"></i> Deposit/Withdrawal Approval</h4>
-            <div style="background: rgba(255, 55, 95, 0.1); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
-                <button class="btn btn-small" style="width: 100%; margin-bottom: 0.5rem;" onclick="adminShowDepositRequests()">
-                    <i class="fas fa-arrow-down"></i> Deposit Requests
-                </button>
-                <button class="btn btn-small" style="width: 100%;" onclick="adminShowWithdrawalRequests()">
-                    <i class="fas fa-arrow-up"></i> Withdrawal Requests
-                </button>
-            </div>
-        </div>
-        
-        <div>
-            <h4 style="margin-bottom: 0.8rem; font-size: 1rem; color: var(--danger);"><i class="fas fa-chart-line"></i> System Stats</h4>
-            <div style="background: rgba(255, 55, 95, 0.1); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Total Users:</span>
-                    <strong id="adminTotalUsers">0</strong>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Total Deposits:</span>
-                    <strong id="adminTotalDeposits">0 USDT</strong>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Total Withdrawals:</span>
-                    <strong id="adminTotalWithdrawals">0 USDT</strong>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Platform Profit:</span>
-                    <strong id="adminPlatformProfit">0 USDT</strong>
-                </div>
-            </div>
-        </div>
-        
-        <button class="btn" style="width: 100%; margin-top: 1.5rem;" onclick="adminRefreshStats()">
-            <i class="fas fa-sync-alt"></i> Refresh Stats
-        </button>
-    </div>
 
     <!-- Profile Sidebar -->
     <div class="profile-sidebar" id="profileSidebar">
@@ -1999,11 +1868,6 @@
         
         <button class="btn btn-purple" style="width: 100%; margin-top: 1.5rem;" onclick="switchTab('profile')">
             <i class="fas fa-user-cog"></i> Edit Profile
-        </button>
-        
-        <!-- Admin Button (only for admin users) -->
-        <button class="btn btn-danger" style="width: 100%; margin-top: 0.8rem; display: none;" id="adminPanelBtn" onclick="toggleAdminPanel()">
-            <i class="fas fa-user-shield"></i> Admin Panel
         </button>
     </div>
 
@@ -2287,8 +2151,8 @@
                     <div>
                         <h4 style="font-size: 1rem;">Contact</h4>
                         <p style="margin-top: 0.8rem; color: #a0a0c0; font-size: 0.9rem;">
-                            <i class="fas fa-envelope"></i> support@cryptowealthpro.com<br>
-                            <i class="fas fa-globe"></i> www.cryptowealthpro.com
+                            <i class="fas fa-envelope"></i> support@cryptowealth.pro<br>
+                            <i class="fas fa-globe"></i> cryptowealth.pro
                         </p>
                     </div>
                 </div>
@@ -2389,8 +2253,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>USDT BEP20 Wallet Address (Optional)</label>
-                    <input type="text" class="form-control" id="usdtWallet" placeholder="Enter your USDT BEP20 wallet address">
+                    <label>USDT BEP20 Wallet Address</label>
+                    <input type="text" class="form-control" id="usdtWallet" placeholder="Enter your USDT BEP20 wallet address" required>
                 </div>
                 
                 <div class="form-group">
@@ -2548,11 +2412,12 @@
                 <!-- Investment Plans Tab -->
                 <div id="plans" class="tab-content">
                     <h2><i class="fas fa-chart-line"></i> Investment Plans</h2>
-                    <p style="margin-bottom: 1rem;">Invest in any plan with USDT BEP20. Minimum deposit: $5, Maximum: $5000</p>
+                    <p style="margin-bottom: 1rem;">Invest in any plan with USDT BEP20. Minimum deposit: $1, Maximum: $5000</p>
                     
                     <div class="plans-container">
                         <!-- Plan 1: $5-$100 -->
                         <div class="plan-card">
+                            <div class="plan-badge">Basic</div>
                             <div class="plan-icon"><i class="fas fa-seedling"></i></div>
                             <h3>Starter Plan</h3>
                             <div class="stat-value">6% Daily</div>
@@ -2582,6 +2447,7 @@
                         
                         <!-- Plan 2: $101-$500 -->
                         <div class="plan-card popular">
+                            <div class="plan-badge">Popular</div>
                             <div class="plan-icon"><i class="fas fa-tree"></i></div>
                             <h3>Growth Plan</h3>
                             <div class="stat-value">6.5% Daily</div>
@@ -2611,6 +2477,7 @@
                         
                         <!-- Plan 3: $501-$1000 -->
                         <div class="plan-card">
+                            <div class="plan-badge">Premium</div>
                             <div class="plan-icon"><i class="fas fa-mountain"></i></div>
                             <h3>Premium Plan</h3>
                             <div class="stat-value">7% Daily</div>
@@ -2640,6 +2507,7 @@
                         
                         <!-- Plan 4: $1001-$5000 -->
                         <div class="plan-card">
+                            <div class="plan-badge">VIP</div>
                             <div class="plan-icon"><i class="fas fa-crown"></i></div>
                             <h3>VIP Plan</h3>
                             <div class="stat-value">7.5% Daily</div>
@@ -3108,12 +2976,12 @@
                 </button>
                 
                 <h2><i class="fas fa-plus-circle"></i> Deposit USDT</h2>
-                <p style="margin-bottom: 1rem;">Deposit USDT via BEP20 network only. Minimum: $5, Maximum: $5000</p>
+                <p style="margin-bottom: 1rem;">Deposit USDT via BEP20 network only. Minimum: $1, Maximum: $5000</p>
                 
                 <div class="form-group">
                     <label>Amount (USDT)</label>
-                    <input type="number" class="form-control" id="depositAmount" placeholder="5" min="5" max="5000" value="50">
-                    <small style="color: #a0a0c0; font-size: 0.85rem;">Minimum $5, Maximum $5000</small>
+                    <input type="number" class="form-control" id="depositAmount" placeholder="1" min="1" max="5000" value="50">
+                    <small style="color: #a0a0c0; font-size: 0.85rem;">Minimum $1, Maximum $5000</small>
                 </div>
                 
                 <div class="qr-code">
@@ -3129,7 +2997,7 @@
                     <p><i class="fas fa-info-circle"></i> Important Instructions:</p>
                     <ol style="margin-left: 1.2rem; margin-top: 0.5rem;">
                         <li>Send USDT via BEP20 network only</li>
-                        <li>Minimum deposit: <span id="minDepositAmount">5</span> USDT</li>
+                        <li>Minimum deposit: <span id="minDepositAmount">1</span> USDT</li>
                         <li>Maximum deposit: <span id="maxDepositAmount">5000</span> USDT</li>
                         <li>Deposit will be credited within 5 minutes</li>
                         <li>Contact support if deposit not credited within 30 minutes</li>
@@ -3285,7 +3153,7 @@
                 <p style="margin-bottom: 1rem;">Share your referral link and earn commissions from 9 levels!</p>
                 
                 <div class="referral-link-container">
-                    <div class="referral-link" id="referralLinkText"></div>
+                    <div class="referral-link" id="referralLinkText">https://cryptowealth.pro/ref/ABC123</div>
                     <button class="btn btn-small" onclick="copyReferralLink()" id="copyBtn">
                         <i class="fas fa-copy"></i> Copy
                     </button>
@@ -3352,8 +3220,8 @@
                     <div>
                         <h4 style="font-size: 1rem;">Contact</h4>
                         <p style="margin-top: 0.8rem; color: #a0a0c0; font-size: 0.9rem;">
-                            <i class="fas fa-envelope"></i> support@cryptowealthpro.com<br>
-                            <i class="fas fa-globe"></i> www.cryptowealthpro.com
+                            <i class="fas fa-envelope"></i> support@cryptowealth.pro<br>
+                            <i class="fas fa-globe"></i> cryptowealth.pro
                         </p>
                     </div>
                 </div>
@@ -3397,12 +3265,9 @@
         let chatActive = false;
         let investmentIntervals = {};
         let profileSidebarOpen = false;
-        let adminPanelOpen = false;
-        let systemSettings = {
-            earningStartTime: 24, // hours after investment
-            earningInterval: 1440, // minutes (24 hours)
-            withdrawalProcessingTime: 24 // hours
-        };
+        let adminSettings = {};
+        let depositAddress = "";
+        let publicSettings = {};
 
         // Investment Plan Configuration
         const investmentPlans = {
@@ -3433,19 +3298,105 @@
             9: 1   // Level 9: 1%
         };
 
-        // Admin users list (add your admin emails here)
-        const adminEmails = ["admin@cryptowealthpro.com", "test@admin.com"];
+        // ====================
+        // URL AND COOKIE HANDLING
+        // ====================
+        function getReferralCodeFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const ref = urlParams.get('ref');
+            return ref || null;
+        }
+
+        function setReferralCookie(referralCode) {
+            const expiryDate = new Date();
+            expiryDate.setDate(expiryDate.getDate() + 30); // 30 days expiry
+            document.cookie = `referralCode=${referralCode}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Lax`;
+        }
+
+        function getReferralCookie() {
+            const name = "referralCode=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const ca = decodedCookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return null;
+        }
+
+        function clearReferralCookie() {
+            document.cookie = "referralCode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+        // Cookie Consent Functions
+        function showCookieConsent() {
+            if (!getCookie('cookiesAccepted')) {
+                document.getElementById('cookieConsent').classList.add('active');
+            }
+        }
+
+        function acceptCookies() {
+            setCookie('cookiesAccepted', 'true', 365);
+            document.getElementById('cookieConsent').classList.remove('active');
+        }
+
+        function declineCookies() {
+            setCookie('cookiesDeclined', 'true', 30);
+            document.getElementById('cookieConsent').classList.remove('active');
+        }
+
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(nameEQ) === 0) {
+                    return c.substring(nameEQ.length, c.length);
+                }
+            }
+            return null;
+        }
 
         // ====================
         // INITIALIZATION
         // ====================
         document.addEventListener('DOMContentLoaded', function() {
-            // Check for referral parameter in URL
-            checkReferralFromURL();
-            
             // Hide loading screen after 2 seconds
             setTimeout(() => {
                 document.getElementById('loadingScreen').style.display = 'none';
+                
+                // Check for referral code in URL first
+                const urlReferralCode = getReferralCodeFromURL();
+                if (urlReferralCode) {
+                    setReferralCookie(urlReferralCode);
+                    // Remove ref parameter from URL to prevent sharing
+                    if (window.history.replaceState) {
+                        const url = new URL(window.location);
+                        url.searchParams.delete('ref');
+                        window.history.replaceState({}, document.title, url);
+                    }
+                }
+                
+                // Show cookie consent if not accepted
+                setTimeout(showCookieConsent, 3000);
+                
+                // Load public settings first
+                loadPublicSettings();
                 
                 // Check auth state
                 auth.onAuthStateChanged((user) => {
@@ -3453,7 +3404,6 @@
                         // User is signed in
                         currentUser = user;
                         loadUserData();
-                        loadSystemSettings();
                         showApp();
                         // Setup plan calculators
                         setupPlanCalculators();
@@ -3467,6 +3417,17 @@
                         // User is signed out
                         showCompanyOverview();
                         updateAuthUI(false);
+                        
+                        // Check for referral cookie and pre-fill signup form
+                        const cookieReferralCode = getReferralCookie();
+                        if (cookieReferralCode) {
+                            // Pre-fill referral code in signup form
+                            setTimeout(() => {
+                                if (document.getElementById('referralCode')) {
+                                    document.getElementById('referralCode').value = cookieReferralCode;
+                                }
+                            }, 1000);
+                        }
                     }
                 });
             }, 2000);
@@ -3478,48 +3439,62 @@
             preventOverflow();
         });
 
-        // ====================
-        // REFERRAL SYSTEM FIX
-        // ====================
-        function checkReferralFromURL() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const referralCode = urlParams.get('ref');
-            
-            if (referralCode) {
-                // Store referral code in localStorage
-                localStorage.setItem('referralCode', referralCode);
-                
-                // Remove ref parameter from URL
-                const newUrl = window.location.pathname;
-                window.history.replaceState({}, document.title, newUrl);
-                
-                // If user is not logged in, show signup modal
-                if (!currentUser) {
-                    setTimeout(() => {
-                        openAuthModal('signup');
-                        document.getElementById('referralCode').value = referralCode;
-                        showNotification('Referral code applied: ' + referralCode, 'success');
-                    }, 1000);
+        function loadPublicSettings() {
+            database.ref('publicSettings').on('value', (snapshot) => {
+                const settings = snapshot.val();
+                if (settings) {
+                    publicSettings = settings;
+                    
+                    // Update deposit address
+                    document.getElementById('depositAddress').value = settings.depositWallet || "0x742d35Cc6634C0532925a3b844Bc9e0F3A5C3a2E";
+                    depositAddress = settings.depositWallet;
+                    
+                    // Update QR code
+                    const qrImg = document.getElementById('depositQRCode');
+                    if (qrImg && settings.depositWallet) {
+                        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(settings.depositWallet)}`;
+                    }
+                    
+                    // Update other settings
+                    document.getElementById('minDepositAmount').textContent = settings.minDeposit || "1";
+                    document.getElementById('maxDepositAmount').textContent = settings.maxDeposit || "5000";
+                    document.getElementById('withdrawalFeePercent').textContent = (settings.withdrawalFee || 12) + "%";
+                    document.getElementById('feePercent').textContent = settings.withdrawalFee || 12;
+                    
+                    // Update deposit form limits
+                    const depositInput = document.getElementById('depositAmount');
+                    if (depositInput) {
+                        depositInput.min = settings.minDeposit || 1;
+                        depositInput.max = settings.maxDeposit || 5000;
+                        depositInput.placeholder = settings.minDeposit || "1";
+                    }
+                    
+                    // Update withdrawal fee calculation
+                    calculateWithdrawalAmount();
                 }
-            }
+            });
         }
 
         // ====================
         // RESPONSIVE FIXES
         // ====================
         function preventOverflow() {
+            // Prevent horizontal scrolling on mobile
             document.body.style.overflowX = 'hidden';
             
+            // Handle viewport on mobile
             const viewportMeta = document.querySelector('meta[name="viewport"]');
             if (viewportMeta) {
                 viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
             }
             
+            // Fix for modals on mobile
             window.addEventListener('resize', handleResize);
             handleResize();
         }
         
         function handleResize() {
+            // Adjust modal padding on mobile
             if (window.innerWidth <= 768) {
                 document.querySelectorAll('.modal-content').forEach(modal => {
                     modal.style.padding = '1.2rem';
@@ -3533,10 +3508,9 @@
         function showCompanyOverview() {
             document.getElementById('companyOverview').style.display = 'block';
             document.getElementById('appContainer').style.display = 'none';
+            // Close profile sidebar if open
             profileSidebarOpen = false;
             document.getElementById('profileSidebar').classList.remove('active');
-            adminPanelOpen = false;
-            document.getElementById('adminPanel').classList.remove('active');
         }
 
         function showApp() {
@@ -3562,6 +3536,7 @@
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
                 document.getElementById('navLinks').classList.remove('active');
             }
         }
@@ -3573,18 +3548,13 @@
             const guestAuthButtons = document.getElementById('guestAuthButtons');
             const userSection = document.getElementById('userSection');
             const navLinks = document.getElementById('navLinks');
-            const adminBadge = document.getElementById('adminBadge');
             
             if (isLoggedIn) {
+                // User is logged in
                 if (guestAuthButtons) guestAuthButtons.style.display = 'none';
                 if (userSection) userSection.style.display = 'flex';
                 
-                // Check if user is admin
-                const isAdmin = adminEmails.includes(currentUser.email);
-                if (adminBadge) {
-                    adminBadge.style.display = isAdmin ? 'block' : 'none';
-                }
-                
+                // Update navigation links for logged in user
                 if (navLinks) {
                     navLinks.innerHTML = `
                         <li><a href="#" onclick="switchTab('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
@@ -3601,9 +3571,11 @@
                     `;
                 }
             } else {
+                // User is not logged in
                 if (guestAuthButtons) guestAuthButtons.style.display = 'flex';
                 if (userSection) userSection.style.display = 'none';
                 
+                // Update navigation links for guest
                 if (navLinks) {
                     navLinks.innerHTML = `
                         <li><a href="#" onclick="scrollToSection('hero')"><i class="fas fa-home"></i> Home</a></li>
@@ -3631,10 +3603,14 @@
             document.getElementById('authModal').classList.add('active');
             switchAuthTab(tab);
             
-            // Auto-fill referral code from localStorage if exists
-            const storedReferralCode = localStorage.getItem('referralCode');
-            if (storedReferralCode && document.getElementById('referralCode')) {
-                document.getElementById('referralCode').value = storedReferralCode;
+            // Pre-fill referral code from cookie if available
+            if (tab === 'signup') {
+                setTimeout(() => {
+                    const referralCookie = getReferralCookie();
+                    if (referralCookie && document.getElementById('referralCode')) {
+                        document.getElementById('referralCode').value = referralCookie;
+                    }
+                }, 100);
             }
         }
 
@@ -3643,6 +3619,7 @@
         }
 
         function switchAuthTab(tab) {
+            // Update active tab
             document.querySelectorAll('.auth-tab').forEach(t => {
                 t.classList.remove('active');
                 if (t.getAttribute('data-auth-tab') === tab) {
@@ -3650,6 +3627,7 @@
                 }
             });
             
+            // Update active form
             document.querySelectorAll('.auth-form').forEach(form => {
                 form.classList.remove('active');
                 if (form.id === tab + 'Form') {
@@ -3672,6 +3650,7 @@
             
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
+                    // Auto login successful
                     showNotification('Login successful!', 'success');
                     closeAuthModal();
                 })
@@ -3680,7 +3659,7 @@
                 });
         });
 
-        // Signup Form Submission - WITH OPTIONAL USDT WALLET
+        // Signup Form Submission
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -3692,13 +3671,8 @@
             let referralCode = document.getElementById('referralCode').value;
             const usdtWallet = document.getElementById('usdtWallet').value;
             
-            // If no referral code in form, check localStorage
-            if (!referralCode) {
-                referralCode = localStorage.getItem('referralCode') || '';
-            }
-            
             // Validation
-            if (!name || !email || !phone || !password || !confirmPassword) {
+            if (!name || !email || !phone || !password || !confirmPassword || !usdtWallet) {
                 showNotification('Please fill all required fields', 'error');
                 return;
             }
@@ -3711,6 +3685,16 @@
             if (password.length < 6) {
                 showNotification('Password must be at least 6 characters', 'error');
                 return;
+            }
+            
+            if (!usdtWallet || usdtWallet.length < 20) {
+                showNotification('Please enter a valid USDT BEP20 wallet address', 'error');
+                return;
+            }
+            
+            // Check if referral code is empty, then check cookie
+            if (!referralCode || referralCode.trim() === '') {
+                referralCode = getReferralCookie();
             }
             
             // Create user with Firebase Auth
@@ -3729,7 +3713,7 @@
                         phone: phone,
                         referralCode: refCode,
                         upline: null,
-                        usdtWallet: usdtWallet || "", // Optional field
+                        usdtWallet: usdtWallet,
                         joinDate: new Date().toISOString(),
                         balance: 0,
                         totalEarnings: 0,
@@ -3737,7 +3721,7 @@
                         rank: 'Bronze',
                         directReferrals: 0,
                         totalDownline: 0,
-                        walletAddress: usdtWallet || "",
+                        walletAddress: usdtWallet,
                         activeInvestments: [],
                         totalInvested: 0,
                         totalWithdrawn: 0,
@@ -3766,12 +3750,11 @@
                             level7: 0,
                             level8: 0,
                             level9: 0
-                        },
-                        isAdmin: adminEmails.includes(email)
+                        }
                     };
                     
                     // Check if referral code exists and update upline
-                    if (referralCode) {
+                    if (referralCode && referralCode.trim() !== '') {
                         database.ref('users').orderByChild('referralCode').equalTo(referralCode).once('value')
                             .then((snapshot) => {
                                 if (snapshot.exists()) {
@@ -3782,11 +3765,13 @@
                                     // Update user's upline
                                     userData.upline = uplineId;
                                     userData.uplineCode = upline.referralCode;
+                                    userData.uplineName = upline.name;
                                     
                                     // Update upline's referral count
                                     const updates = {};
                                     updates['users/' + uplineId + '/directReferrals'] = (upline.directReferrals || 0) + 1;
                                     updates['users/' + uplineId + '/levelCounts/level1'] = (upline.levelCounts?.level1 || 0) + 1;
+                                    updates['users/' + uplineId + '/totalDownline'] = (upline.totalDownline || 0) + 1;
                                     
                                     database.ref().update(updates);
                                 }
@@ -3800,8 +3785,8 @@
                     }
                 })
                 .then(() => {
-                    // Clear referral code from localStorage after successful signup
-                    localStorage.removeItem('referralCode');
+                    // Clear referral cookie after successful signup
+                    clearReferralCookie();
                     
                     // AUTO LOGIN: Sign in the user after successful signup
                     return auth.signInWithEmailAndPassword(email, password);
@@ -3819,10 +3804,9 @@
             if (confirm('Are you sure you want to logout?')) {
                 auth.signOut().then(() => {
                     showNotification('Logged out successfully', 'success');
+                    // Close profile sidebar if open
                     profileSidebarOpen = false;
                     document.getElementById('profileSidebar').classList.remove('active');
-                    adminPanelOpen = false;
-                    document.getElementById('adminPanel').classList.remove('active');
                 });
             }
         }
@@ -3849,33 +3833,11 @@
             
             if (profileSidebarOpen) {
                 sidebar.classList.add('active');
-                // Close admin panel if open
-                adminPanelOpen = false;
-                document.getElementById('adminPanel').classList.remove('active');
                 // Close mobile menu if open
                 document.getElementById('navLinks').classList.remove('active');
                 updateSidebarProfile();
             } else {
                 sidebar.classList.remove('active');
-            }
-        }
-        
-        function toggleAdminPanel() {
-            const panel = document.getElementById('adminPanel');
-            adminPanelOpen = !adminPanelOpen;
-            
-            if (adminPanelOpen) {
-                panel.classList.add('active');
-                // Close profile sidebar if open
-                profileSidebarOpen = false;
-                document.getElementById('profileSidebar').classList.remove('active');
-                // Close mobile menu if open
-                document.getElementById('navLinks').classList.remove('active');
-                // Load admin data
-                adminRefreshStats();
-                loadSystemSettingsToAdmin();
-            } else {
-                panel.classList.remove('active');
             }
         }
         
@@ -3914,50 +3876,6 @@
             
             document.getElementById('sidebarTeamSize').textContent = 
                 userData.totalDownline || 0;
-            
-            // Show/hide admin panel button
-            const adminPanelBtn = document.getElementById('adminPanelBtn');
-            if (adminPanelBtn) {
-                adminPanelBtn.style.display = userData.isAdmin ? 'block' : 'none';
-            }
-        }
-
-        // ====================
-        // SYSTEM SETTINGS
-        // ====================
-        function loadSystemSettings() {
-            database.ref('systemSettings').once('value')
-                .then((snapshot) => {
-                    if (snapshot.exists()) {
-                        systemSettings = snapshot.val();
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error loading system settings:', error);
-                });
-        }
-        
-        function loadSystemSettingsToAdmin() {
-            document.getElementById('earningStartTime').value = systemSettings.earningStartTime;
-            document.getElementById('earningInterval').value = systemSettings.earningInterval;
-            document.getElementById('withdrawalProcessingTime').value = systemSettings.withdrawalProcessingTime;
-        }
-        
-        function saveSystemSettings() {
-            const newSettings = {
-                earningStartTime: parseInt(document.getElementById('earningStartTime').value) || 24,
-                earningInterval: parseInt(document.getElementById('earningInterval').value) || 1440,
-                withdrawalProcessingTime: parseInt(document.getElementById('withdrawalProcessingTime').value) || 24
-            };
-            
-            database.ref('systemSettings').set(newSettings)
-                .then(() => {
-                    systemSettings = newSettings;
-                    showNotification('System settings saved successfully!', 'success');
-                })
-                .catch((error) => {
-                    showNotification('Error saving settings: ' + error.message, 'error');
-                });
         }
 
         // ====================
@@ -4015,14 +3933,10 @@
             if (mobileMenuBtn && navLinks) {
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
-                    // Close sidebars if open
+                    // Close profile sidebar if open
                     if (profileSidebarOpen) {
                         profileSidebarOpen = false;
                         document.getElementById('profileSidebar').classList.remove('active');
-                    }
-                    if (adminPanelOpen) {
-                        adminPanelOpen = false;
-                        document.getElementById('adminPanel').classList.remove('active');
                     }
                 });
             }
@@ -4079,50 +3993,44 @@
                 }
             });
             
-            // Close sidebars when clicking outside
+            // Close sidebar when clicking outside on mobile
             document.addEventListener('click', function(e) {
                 const sidebar = document.getElementById('profileSidebar');
-                const adminPanel = document.getElementById('adminPanel');
                 const userAvatar = document.getElementById('userAvatar');
+                const profileBtn = document.querySelector('[onclick="toggleProfileSidebar()"]');
                 
                 if (profileSidebarOpen && sidebar && 
                     !sidebar.contains(e.target) && 
-                    !userAvatar.contains(e.target)) {
+                    !userAvatar.contains(e.target) && 
+                    !profileBtn.contains(e.target)) {
                     profileSidebarOpen = false;
                     sidebar.classList.remove('active');
                 }
-                
-                if (adminPanelOpen && adminPanel && 
-                    !adminPanel.contains(e.target) && 
-                    !userAvatar.contains(e.target)) {
-                    adminPanelOpen = false;
-                    adminPanel.classList.remove('active');
-                }
             });
             
-            // Handle escape key to close modals and sidebars
+            // Handle escape key to close modals and sidebar
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
+                    // Close all modals
                     document.querySelectorAll('.modal.active').forEach(modal => {
                         modal.classList.remove('active');
                     });
                     
+                    // Close auth modal
                     closeAuthModal();
                     
+                    // Close crypto bot modal
                     document.getElementById('cryptoBotModal').classList.remove('active');
                     
+                    // Close chat
                     if (chatActive) {
                         hideChat();
                     }
                     
+                    // Close profile sidebar
                     if (profileSidebarOpen) {
                         profileSidebarOpen = false;
                         document.getElementById('profileSidebar').classList.remove('active');
-                    }
-                    
-                    if (adminPanelOpen) {
-                        adminPanelOpen = false;
-                        document.getElementById('adminPanel').classList.remove('active');
                     }
                 }
             });
@@ -4162,6 +4070,7 @@
             } else if (tabId === 'network' && userData) {
                 updateNetworkTree();
             } else if (tabId === 'profile') {
+                // Close profile sidebar when opening profile tab
                 profileSidebarOpen = false;
                 document.getElementById('profileSidebar').classList.remove('active');
             }
@@ -4249,16 +4158,9 @@
             
             userData.activeInvestments.forEach(investment => {
                 if (investment.status === 'active') {
-                    // Check if 24 hours have passed since investment
-                    const investmentDate = new Date(investment.startDate);
-                    const now = new Date();
-                    const hoursSinceInvestment = (now - investmentDate) / (1000 * 60 * 60);
-                    
-                    if (hoursSinceInvestment >= 24) {
-                        // Calculate daily earnings
-                        const dailyEarning = (investment.amount * investment.dailyReturn / 100);
-                        todayEarnings += dailyEarning;
-                    }
+                    // Calculate daily earnings
+                    const dailyEarning = (investment.amount * investment.dailyReturn / 100);
+                    todayEarnings += dailyEarning;
                 }
             });
             
@@ -4483,7 +4385,6 @@
             document.getElementById('plan4Total').textContent = '$' + totalReturn;
         }
 
-        // FIXED: Users can only invest if they have enough balance
         function investInPlan(planNumber) {
             if (!userData) {
                 showNotification('Please login to invest', 'error');
@@ -4506,17 +4407,6 @@
                 return;
             }
             
-            // Check if user already has this plan active (prevent double purchase)
-            const activeInvestments = userData.activeInvestments || [];
-            const hasActivePlan = activeInvestments.some(inv => 
-                inv.planId === planNumber && inv.status === 'active'
-            );
-            
-            if (hasActivePlan) {
-                showNotification(`You already have an active ${plan.name}. Wait for it to complete before investing again.`, 'error');
-                return;
-            }
-            
             // Create investment
             const investment = {
                 planId: planNumber,
@@ -4528,12 +4418,11 @@
                 endDate: new Date(Date.now() + plan.days * 24 * 60 * 60 * 1000).toISOString(),
                 status: 'active',
                 totalEarned: 0,
-                daysCompleted: 0,
-                nextEarningDate: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 24 hours later
-                earningsStarted: false
+                daysCompleted: 0
             };
             
             // Update user data
+            const activeInvestments = userData.activeInvestments || [];
             activeInvestments.push(investment);
             
             const updates = {
@@ -4551,12 +4440,12 @@
             
             updateUserData(updates)
                 .then(() => {
-                    showNotification(`Successfully invested $${amount} in ${plan.name}! Earnings will start in 24 hours.`, 'success');
+                    showNotification(`Successfully invested $${amount} in ${plan.name}!`, 'success');
                     updateInvestmentHistory();
                     updateBusinessSummary();
                     
-                    // Schedule earnings after 24 hours
-                    scheduleInvestmentEarning(investment);
+                    // Start earnings simulation
+                    startInvestmentEarning(investment);
                 })
                 .catch((error) => {
                     showNotification('Error processing investment: ' + error.message, 'error');
@@ -4651,90 +4540,58 @@
             // Start earning simulation for each active investment
             userData.activeInvestments.forEach((investment, index) => {
                 if (investment.status === 'active') {
-                    scheduleInvestmentEarning(investment);
+                    startInvestmentEarning(investment);
                 }
             });
         }
 
-        function scheduleInvestmentEarning(investment) {
-            const investmentId = Date.now() + Math.random();
-            const now = new Date();
-            const nextEarningDate = new Date(investment.nextEarningDate || new Date(now.getTime() + 24 * 60 * 60 * 1000));
-            
-            // Calculate time until next earning (24 hours after investment)
-            const timeUntilNextEarning = nextEarningDate - now;
-            
-            if (timeUntilNextEarning > 0) {
-                // Schedule first earning after 24 hours
-                setTimeout(() => {
-                    processInvestmentEarning(investment);
-                    // Start interval for daily earnings
-                    startDailyEarnings(investment);
-                }, timeUntilNextEarning);
-            } else {
-                // Already past 24 hours, process immediately
-                processInvestmentEarning(investment);
-                startDailyEarnings(investment);
-            }
-        }
-
-        function startDailyEarnings(investment) {
+        function startInvestmentEarning(investment) {
             const investmentId = Date.now() + Math.random();
             
-            // Set interval for daily earnings (24 hours)
+            // Simulate daily earnings
             const interval = setInterval(() => {
                 if (!userData) {
                     clearInterval(interval);
                     return;
                 }
                 
-                processInvestmentEarning(investment);
+                const now = new Date();
+                const endDate = new Date(investment.endDate);
                 
-            }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+                if (now >= endDate) {
+                    // Investment completed
+                    clearInterval(interval);
+                    updateInvestmentStatus(investment, 'completed');
+                    return;
+                }
+                
+                // Calculate daily earnings
+                const dailyEarning = investment.amount * investment.dailyReturn / 100;
+                
+                // Update user balance
+                const updates = {
+                    balance: userData.balance + dailyEarning,
+                    totalEarnings: (userData.totalEarnings || 0) + dailyEarning
+                };
+                
+                // Update investment earnings
+                const activeInvestments = userData.activeInvestments || [];
+                const investmentIndex = activeInvestments.findIndex(inv => 
+                    inv.planId === investment.planId && 
+                    inv.startDate === investment.startDate
+                );
+                
+                if (investmentIndex !== -1) {
+                    activeInvestments[investmentIndex].totalEarned += dailyEarning;
+                    activeInvestments[investmentIndex].daysCompleted += 1;
+                    updates.activeInvestments = activeInvestments;
+                }
+                
+                updateUserData(updates);
+                
+            }, 60000); // Update every minute for demo purposes (in real app, this would be daily)
             
             investmentIntervals[investmentId] = interval;
-        }
-
-        function processInvestmentEarning(investment) {
-            if (!userData) return;
-            
-            const now = new Date();
-            const endDate = new Date(investment.endDate);
-            
-            if (now >= endDate) {
-                // Investment completed
-                updateInvestmentStatus(investment, 'completed');
-                return;
-            }
-            
-            // Calculate daily earnings
-            const dailyEarning = investment.amount * investment.dailyReturn / 100;
-            
-            // Update user balance
-            const updates = {
-                balance: userData.balance + dailyEarning,
-                totalEarnings: (userData.totalEarnings || 0) + dailyEarning
-            };
-            
-            // Update investment earnings
-            const activeInvestments = userData.activeInvestments || [];
-            const investmentIndex = activeInvestments.findIndex(inv => 
-                inv.planId === investment.planId && 
-                inv.startDate === investment.startDate
-            );
-            
-            if (investmentIndex !== -1) {
-                activeInvestments[investmentIndex].totalEarned += dailyEarning;
-                activeInvestments[investmentIndex].daysCompleted += 1;
-                activeInvestments[investmentIndex].nextEarningDate = new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString();
-                activeInvestments[investmentIndex].earningsStarted = true;
-                updates.activeInvestments = activeInvestments;
-                
-                // Add transaction for earnings
-                addTransaction('investment_earning', dailyEarning, `Daily earnings from ${investment.planName}`, 'completed');
-            }
-            
-            updateUserData(updates);
         }
 
         function updateInvestmentStatus(investment, status) {
@@ -5062,7 +4919,7 @@
             withdrawalTransactions.forEach(transaction => {
                 const row = document.createElement('tr');
                 const date = new Date(transaction.timestamp).toLocaleDateString();
-                const fee = transaction.fee || (transaction.amount * 12 / 100);
+                const fee = transaction.fee || (transaction.amount * (publicSettings.withdrawalFee || 12) / 100);
                 const netAmount = transaction.netAmount || (transaction.amount - fee);
                 
                 row.innerHTML = `
@@ -5081,11 +4938,14 @@
         // ====================
         function openDepositModal() {
             document.getElementById('depositModal').classList.add('active');
-            const depositInput = document.getElementById('depositAmount');
-            depositInput.max = 5000;
-            depositInput.min = 5; // Minimum deposit is $5
-            depositInput.placeholder = "5";
-            depositInput.value = 50;
+            // Update available balance and limits
+            const minDeposit = publicSettings.minDeposit || 1;
+            const maxDeposit = publicSettings.maxDeposit || 5000;
+            
+            document.getElementById('depositAmount').max = maxDeposit;
+            document.getElementById('depositAmount').min = minDeposit;
+            document.getElementById('depositAmount').placeholder = minDeposit;
+            document.getElementById('depositAmount').value = minDeposit;
         }
 
         function closeDepositModal() {
@@ -5094,9 +4954,11 @@
 
         function processDeposit() {
             const amount = parseFloat(document.getElementById('depositAmount').value) || 0;
+            const minDeposit = publicSettings.minDeposit || 1;
+            const maxDeposit = publicSettings.maxDeposit || 5000;
             
-            if (amount < 5 || amount > 5000) {
-                showNotification(`Please enter amount between $5 and $5000`, 'error');
+            if (amount < minDeposit || amount > maxDeposit) {
+                showNotification(`Please enter amount between $${minDeposit} and $${maxDeposit}`, 'error');
                 return;
             }
             
@@ -5132,10 +4994,11 @@
             
             // Setup withdrawal amount calculator
             const withdrawInput = document.getElementById('withdrawAmount');
-            withdrawInput.value = Math.max(1, Math.min(userData.balance, 100));
+            const minWithdrawal = publicSettings.minWithdrawal || 1;
+            withdrawInput.value = Math.max(minWithdrawal, Math.min(userData.balance, 100));
             withdrawInput.max = userData.balance;
-            withdrawInput.min = 1;
-            withdrawInput.placeholder = "1";
+            withdrawInput.min = minWithdrawal;
+            withdrawInput.placeholder = minWithdrawal;
             calculateWithdrawalAmount();
         }
 
@@ -5152,7 +5015,8 @@
 
         function calculateWithdrawalAmount() {
             const amount = parseFloat(document.getElementById('withdrawAmount').value) || 0;
-            const withdrawalFee = (amount * 12 / 100);
+            const withdrawalFeePercent = publicSettings.withdrawalFee || 12;
+            const withdrawalFee = (amount * withdrawalFeePercent / 100);
             const netAmount = amount - withdrawalFee;
             
             document.getElementById('withdrawalFee').value = withdrawalFee.toFixed(2) + ' USDT';
@@ -5162,9 +5026,10 @@
         function processWithdrawal() {
             const amount = parseFloat(document.getElementById('withdrawAmount').value) || 0;
             const walletAddress = document.getElementById('withdrawAddress').value.trim();
+            const minWithdrawal = publicSettings.minWithdrawal || 1;
             
-            if (amount < 1) {
-                showNotification(`Minimum withdrawal amount is 1 USDT`, 'error');
+            if (amount < minWithdrawal) {
+                showNotification(`Minimum withdrawal amount is ${minWithdrawal} USDT`, 'error');
                 return;
             }
             
@@ -5178,14 +5043,9 @@
                 return;
             }
             
-            const withdrawalFee = (amount * 12 / 100);
+            const withdrawalFeePercent = publicSettings.withdrawalFee || 12;
+            const withdrawalFee = (amount * withdrawalFeePercent / 100);
             const netAmount = amount - withdrawalFee;
-            
-            // Update user balance
-            const updates = {
-                balance: userData.balance - amount,
-                totalWithdrawn: (userData.totalWithdrawn || 0) + amount
-            };
             
             // Create withdrawal request
             const withdrawalRequest = {
@@ -5203,16 +5063,11 @@
             // Save withdrawal request to database
             database.ref('withdrawalRequests').push(withdrawalRequest)
                 .then(() => {
-                    // Update user data
-                    return updateUserData(updates);
-                })
-                .then(() => {
-                    // Add to user transactions
-                    return addTransaction('withdrawal', amount, 'Withdrawal Request', 'pending');
-                })
-                .then(() => {
-                    showNotification('Withdrawal request submitted! $' + amount + ' deducted from your balance. Admin will process it within ' + systemSettings.withdrawalProcessingTime + ' hours.', 'success');
+                    showNotification('Withdrawal request submitted! Admin will process it within 24 hours.', 'success');
                     closeWithdrawModal();
+                    
+                    // Add to user transactions
+                    addTransaction('withdrawal', amount, 'Withdrawal Request', 'pending');
                 })
                 .catch((error) => {
                     showNotification('Error submitting withdrawal request: ' + error.message, 'error');
@@ -5247,7 +5102,7 @@
                 const responses = [
                     "Thanks for your message! Our support team will get back to you soon.",
                     "I understand your concern. Can you please provide more details?",
-                    "For immediate assistance, please email support@cryptowealthpro.com",
+                    "For immediate assistance, please email support@cryptowealth.pro",
                     "Your query has been noted. We'll respond within 24 hours.",
                     "Is there anything specific about our platform you'd like to know?"
                 ];
@@ -5349,9 +5204,9 @@
             if (!userData) return;
             
             document.getElementById('referralModal').classList.add('active');
-            const currentUrl = window.location.origin + window.location.pathname;
-            const referralLink = `${currentUrl}?ref=${userData.referralCode}`;
-            document.getElementById('referralLinkText').textContent = referralLink;
+            const baseUrl = window.location.origin || 'https://cryptowealth.pro';
+            document.getElementById('referralLinkText').textContent = 
+                `${baseUrl}?ref=${userData.referralCode}`;
         }
 
         function closeReferralModal() {
@@ -5359,7 +5214,8 @@
         }
 
         function copyReferralLink() {
-            const link = document.getElementById('referralLinkText').textContent;
+            const baseUrl = window.location.origin || 'https://cryptowealth.pro';
+            const link = `${baseUrl}?ref=${userData.referralCode}`;
             const copyBtn = document.getElementById('copyBtn');
             
             navigator.clipboard.writeText(link)
@@ -5380,19 +5236,22 @@
         }
 
         function shareOnFacebook() {
-            const link = encodeURIComponent(document.getElementById('referralLinkText').textContent);
+            const baseUrl = window.location.origin || 'https://cryptowealth.pro';
+            const link = encodeURIComponent(`${baseUrl}?ref=${userData.referralCode}`);
             const text = encodeURIComponent("Join CryptoWealth Pro and earn 6-7.5% daily returns! 9-level commission structure.");
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${link}&quote=${text}`, '_blank');
         }
 
         function shareOnWhatsApp() {
-            const link = document.getElementById('referralLinkText').textContent;
+            const baseUrl = window.location.origin || 'https://cryptowealth.pro';
+            const link = `${baseUrl}?ref=${userData.referralCode}`;
             const text = `Join CryptoWealth Pro and earn 6-7.5% daily returns! 9-level commission structure. Sign up here: ${link}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
         }
 
         function shareOnTelegram() {
-            const link = document.getElementById('referralLinkText').textContent;
+            const baseUrl = window.location.origin || 'https://cryptowealth.pro';
+            const link = `${baseUrl}?ref=${userData.referralCode}`;
             const text = `Join CryptoWealth Pro and earn 6-7.5% daily returns! 9-level commission structure. Sign up here: ${link}`;
             window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(text)}`, '_blank');
         }
@@ -5413,6 +5272,10 @@
             if (email !== userData.email) updates.email = email;
             if (phone !== userData.phone) updates.phone = phone;
             if (walletAddress !== userData.usdtWallet) {
+                if (!walletAddress || walletAddress.length < 20) {
+                    showNotification('Please enter a valid USDT BEP20 wallet address', 'error');
+                    return;
+                }
                 updates.usdtWallet = walletAddress;
                 updates.walletAddress = walletAddress;
             }
@@ -5421,116 +5284,13 @@
                 updateUserData(updates)
                     .then(() => {
                         showNotification('Profile updated successfully!', 'success');
+                        // Update sidebar
                         updateSidebarProfile();
                     })
                     .catch((error) => {
                         showNotification('Error: ' + error.message, 'error');
                     });
             }
-        }
-
-        // ====================
-        // ADMIN FUNCTIONS
-        // ====================
-        function adminRefreshStats() {
-            // Get total users
-            database.ref('users').once('value')
-                .then((snapshot) => {
-                    const users = snapshot.val();
-                    const totalUsers = users ? Object.keys(users).length : 0;
-                    document.getElementById('adminTotalUsers').textContent = totalUsers;
-                    
-                    // Calculate total deposits and withdrawals
-                    let totalDeposits = 0;
-                    let totalWithdrawals = 0;
-                    let platformProfit = 0;
-                    
-                    if (users) {
-                        Object.values(users).forEach(user => {
-                            totalDeposits += user.totalInvested || 0;
-                            totalWithdrawals += user.totalWithdrawn || 0;
-                        });
-                        
-                        // Platform profit = total deposits - total withdrawals
-                        platformProfit = totalDeposits - totalWithdrawals;
-                    }
-                    
-                    document.getElementById('adminTotalDeposits').textContent = totalDeposits.toFixed(2) + ' USDT';
-                    document.getElementById('adminTotalWithdrawals').textContent = totalWithdrawals.toFixed(2) + ' USDT';
-                    document.getElementById('adminPlatformProfit').textContent = platformProfit.toFixed(2) + ' USDT';
-                })
-                .catch((error) => {
-                    showNotification('Error loading stats: ' + error.message, 'error');
-                });
-        }
-
-        function adminGetUserData() {
-            const userId = document.getElementById('adminUserId').value.trim();
-            
-            if (!userId) {
-                showNotification('Please enter a user ID', 'error');
-                return;
-            }
-            
-            database.ref('users/' + userId).once('value')
-                .then((snapshot) => {
-                    const user = snapshot.val();
-                    if (!user) {
-                        showNotification('User not found', 'error');
-                        document.getElementById('adminUserInfo').style.display = 'none';
-                        return;
-                    }
-                    
-                    const userInfoDiv = document.getElementById('adminUserInfo');
-                    userInfoDiv.style.display = 'block';
-                    userInfoDiv.innerHTML = `
-                        <div style="background: rgba(0,255,136,0.1); padding: 0.8rem; border-radius: 8px;">
-                            <p><strong>Name:</strong> ${user.name}</p>
-                            <p><strong>Email:</strong> ${user.email}</p>
-                            <p><strong>Balance:</strong> ${user.balance.toFixed(2)} USDT</p>
-                            <p><strong>Total Earnings:</strong> ${user.totalEarnings.toFixed(2)} USDT</p>
-                            <p><strong>Total Withdrawn:</strong> ${user.totalWithdrawn.toFixed(2)} USDT</p>
-                            <p><strong>Self Business:</strong> ${user.selfBusiness.toFixed(2)} USDT</p>
-                            <p><strong>Team Business:</strong> ${user.teamBusiness.toFixed(2)} USDT</p>
-                        </div>
-                    `;
-                })
-                .catch((error) => {
-                    showNotification('Error finding user: ' + error.message, 'error');
-                });
-        }
-
-        function adminUpdateUserBalance() {
-            const userId = document.getElementById('adminUserId').value.trim();
-            const newBalance = prompt('Enter new balance (USDT):');
-            
-            if (!userId || !newBalance) {
-                showNotification('Please enter user ID and new balance', 'error');
-                return;
-            }
-            
-            const balance = parseFloat(newBalance);
-            if (isNaN(balance) || balance < 0) {
-                showNotification('Please enter a valid positive number', 'error');
-                return;
-            }
-            
-            database.ref('users/' + userId + '/balance').set(balance)
-                .then(() => {
-                    showNotification('User balance updated successfully!', 'success');
-                    adminGetUserData(); // Refresh user info
-                })
-                .catch((error) => {
-                    showNotification('Error updating balance: ' + error.message, 'error');
-                });
-        }
-
-        function adminShowDepositRequests() {
-            alert('Deposit requests management would open here. In a real system, this would show a list of pending deposit requests for approval.');
-        }
-
-        function adminShowWithdrawalRequests() {
-            alert('Withdrawal requests management would open here. In a real system, this would show a list of pending withdrawal requests for approval.');
         }
 
         // ====================
@@ -5586,24 +5346,17 @@
                             userData.activeInvestments[index].status = 'completed';
                             hasUpdate = true;
                         } else {
-                            // Check if 24 hours have passed since investment
-                            const startDate = new Date(investment.startDate);
-                            const hoursSinceInvestment = (now - startDate) / (1000 * 60 * 60);
+                            // Add daily earnings (simulated)
+                            const lastEarning = investment.lastEarning ? new Date(investment.lastEarning) : new Date(investment.startDate);
+                            const hoursSinceLastEarning = (now - lastEarning) / (1000 * 60 * 60);
                             
-                            if (hoursSinceInvestment >= 24) {
-                                // Check last earning time
-                                const lastEarning = investment.lastEarning ? new Date(investment.lastEarning) : new Date(startDate.getTime() + 24 * 60 * 60 * 1000);
-                                const hoursSinceLastEarning = (now - lastEarning) / (1000 * 60 * 60);
-                                
-                                if (hoursSinceLastEarning >= 24) {
-                                    const dailyEarning = investment.amount * investment.dailyReturn / 100;
-                                    
-                                    userData.balance += dailyEarning;
-                                    userData.totalEarnings += dailyEarning;
-                                    userData.activeInvestments[index].totalEarned += dailyEarning;
-                                    userData.activeInvestments[index].lastEarning = now.toISOString();
-                                    hasUpdate = true;
-                                }
+                            if (hoursSinceLastEarning >= 24) {
+                                const dailyEarning = investment.amount * investment.dailyReturn / 100;
+                                userData.balance += dailyEarning;
+                                userData.totalEarnings += dailyEarning;
+                                userData.activeInvestments[index].totalEarned += dailyEarning;
+                                userData.activeInvestments[index].lastEarning = now.toISOString();
+                                hasUpdate = true;
                             }
                         }
                     }
