@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CryptoWealth Pro - Advanced Crypto MLM Platform</title>
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -14,35 +14,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a0a1a;
-            --secondary: #00ff88;
-            --accent: #8a2be2;
-            --warning: #ffaa00;
-            --danger: #ff375f;
-            --info: #00d4ff;
-            --dark: #050510;
-            --light: #f0f0f0;
-            --card-bg: rgba(20, 20, 40, 0.95);
-            --gradient: linear-gradient(135deg, #0a0a1a 0%, #151530 100%);
-            --gradient-accent: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            --gradient-purple: linear-gradient(135deg, #8a2be2 0%, #ff00ff 100%);
-            --gradient-3d: linear-gradient(145deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
-            --shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
-            --shadow-3d: 0 20px 40px rgba(0, 0, 0, 0.5), 0 10px 20px rgba(0, 255, 136, 0.15);
-            --glow: 0 0 20px rgba(0, 255, 136, 0.4);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --modern-primary: #0f0f23;
-            --modern-secondary: #00ff9d;
-            --modern-accent: #a855f7;
+            --primary: #f8fafc;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+            --dark: #1e293b;
+            --light: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --gradient: linear-gradient(135deg, #f0f9ff 0%, #fdf2f8 100%);
+            --gradient-accent: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+            --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            --gradient-3d: linear-gradient(145deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-3d: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --glow: 0 0 15px rgba(16, 185, 129, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --modern-primary: #f8fafc;
+            --modern-secondary: #10b981;
+            --modern-accent: #8b5cf6;
             --modern-warning: #f59e0b;
             --modern-danger: #ef4444;
             --modern-info: #3b82f6;
-            --gradient-modern: linear-gradient(135deg, #0f0f23 0%, #1e1e40 50%, #0f0f23 100%);
-            --gradient-card: linear-gradient(145deg, rgba(20, 20, 45, 0.95) 0%, rgba(30, 30, 60, 0.95) 100%);
-            --gradient-button: linear-gradient(135deg, #00ff9d 0%, #3b82f6 100%);
+            --gradient-modern: linear-gradient(135deg, #f8fafc 0%, #f0fdf4 50%, #f8fafc 100%);
+            --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            --gradient-button: linear-gradient(135deg, #10b981 0%, #34d399 100%);
             --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-            --gradient-silver: linear-gradient(135deg, #d1d5db 0%, #9ca3af 50%, #6b7280 100%);
+            --gradient-silver: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #9ca3af 100%);
         }
 
         * {
@@ -54,7 +54,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background: var(--gradient-modern);
-            color: var(--light);
+            color: #334155;
             line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
@@ -70,9 +70,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 255, 157, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
             z-index: -1;
         }
 
@@ -81,11 +81,11 @@
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            color: #1e293b;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 15px;
@@ -109,12 +109,12 @@
         .loader {
             width: 60px;
             height: 60px;
-            border: 5px solid rgba(0, 255, 157, 0.3);
+            border: 5px solid rgba(16, 185, 129, 0.2);
             border-radius: 50%;
             border-top-color: var(--modern-secondary);
             animation: spin 1s linear infinite;
             margin-bottom: 2rem;
-            box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
         }
 
         @keyframes spin {
@@ -123,9 +123,9 @@
 
         /* Header - Always Visible */
         header {
-            background: rgba(15, 15, 35, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
             position: fixed;
             width: 100%;
             top: 0;
@@ -151,7 +151,6 @@
             cursor: pointer;
             text-decoration: none;
             white-space: nowrap;
-            text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
         }
 
         .nav-links {
@@ -162,7 +161,7 @@
         }
 
         .nav-links a {
-            color: var(--light);
+            color: #475569;
             text-decoration: none;
             font-weight: 500;
             padding: 0.5rem 0.8rem;
@@ -195,9 +194,9 @@
         }
 
         .nav-links a:hover {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.1);
         }
 
         .auth-buttons {
@@ -215,7 +214,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--light);
+            color: #475569;
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
@@ -225,14 +224,14 @@
         }
 
         .mobile-menu-btn:hover {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.1);
         }
 
         /* Company Overview Page - Always Visible */
         .company-overview {
             min-height: 100vh;
             padding-top: 80px;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #f0fdf4 100%);
             position: relative;
             overflow: hidden;
         }
@@ -245,21 +244,21 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
             z-index: 0;
         }
 
         .hero-section {
             padding: 4rem 0;
             text-align: center;
-            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             margin: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: var(--shadow-3d);
         }
 
@@ -271,7 +270,7 @@
             right: 0;
             bottom: 0;
             background: url('https://images.unsplash.com/photo-1620336655055-bd87c6d6420b?q=80&w=1000') center/cover no-repeat;
-            opacity: 0.1;
+            opacity: 0.03;
             z-index: 0;
         }
 
@@ -293,16 +292,15 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
         }
 
         .tagline {
             font-size: 1.8rem;
             margin-bottom: 2rem;
-            color: var(--light);
+            color: #475569;
             font-weight: 300;
             line-height: 1.4;
-            background: linear-gradient(135deg, #ffffff 0%, #a0a0c0 100%);
+            background: linear-gradient(135deg, #334155 0%, #64748b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -320,7 +318,7 @@
             background: var(--gradient-card);
             padding: 1.5rem;
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             min-width: 180px;
             box-shadow: var(--shadow-3d);
             transition: all 0.3s;
@@ -328,7 +326,7 @@
 
         .stat-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .stat-number {
@@ -337,19 +335,18 @@
             color: var(--modern-secondary);
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
         }
 
         .stat-label {
             font-size: 1rem;
-            color: #a0a0c0;
+            color: #64748b;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .mission-section {
             padding: 5rem 0;
-            background: rgba(15, 15, 35, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             position: relative;
         }
 
@@ -372,13 +369,13 @@
         .mission-text {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: #cbd5e1;
+            color: #475569;
             margin-bottom: 2rem;
         }
 
         .features-section {
             padding: 5rem 0;
-            background: rgba(20, 20, 45, 0.8);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .features-grid {
@@ -392,7 +389,7 @@
             background: var(--gradient-card);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.1);
             transition: all 0.3s;
             text-align: center;
             position: relative;
@@ -407,7 +404,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
             transition: left 0.5s;
         }
 
@@ -417,9 +414,9 @@
 
         .feature-card:hover {
             transform: translateY(-10px) scale(1.02);
-            background: linear-gradient(145deg, rgba(30, 30, 60, 0.95) 0%, rgba(40, 40, 80, 0.95) 100%);
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
             border-color: var(--modern-secondary);
-            box-shadow: 0 25px 50px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
         }
 
         .feature-icon {
@@ -433,17 +430,17 @@
         .feature-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--light);
+            color: #1e293b;
         }
 
         .feature-description {
-            color: #a0a0c0;
+            color: #64748b;
             line-height: 1.6;
         }
 
         .investment-plans-section {
             padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(15, 15, 35, 0.9) 0%, rgba(25, 25, 55, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 253, 244, 0.95) 100%);
         }
 
         .plans-overview {
@@ -459,7 +456,7 @@
             border-radius: 15px;
             padding: 2rem;
             text-align: center;
-            border: 2px solid rgba(0, 255, 157, 0.3);
+            border: 2px solid rgba(16, 185, 129, 0.2);
             transition: all 0.3s;
             flex: 1;
             min-width: 250px;
@@ -476,7 +473,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
             transition: left 0.5s;
         }
 
@@ -487,7 +484,7 @@
         .plan-overview-card:hover {
             transform: translateY(-5px);
             border-color: var(--modern-secondary);
-            box-shadow: 0 20px 40px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1);
         }
 
         .plan-name {
@@ -503,7 +500,7 @@
 
         .plan-details li {
             margin-bottom: 0.8rem;
-            color: #cbd5e1;
+            color: #475569;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -517,7 +514,7 @@
         .cta-section {
             padding: 5rem 0;
             text-align: center;
-            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
         }
 
         .cta-content {
@@ -540,7 +537,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             display: none;
             justify-content: center;
             align-items: center;
@@ -562,7 +559,7 @@
             width: 90%;
             max-width: 500px;
             padding: 3rem;
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             box-shadow: var(--shadow-3d);
             position: relative;
             overflow: hidden;
@@ -575,7 +572,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
             transition: left 0.5s;
         }
 
@@ -600,7 +597,7 @@
         .auth-tabs {
             display: flex;
             margin-bottom: 2rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 0.5rem;
         }
@@ -610,7 +607,7 @@
             padding: 1rem;
             background: none;
             border: none;
-            color: var(--light);
+            color: #334155;
             font-weight: 600;
             cursor: pointer;
             border-radius: 8px;
@@ -619,7 +616,7 @@
 
         .auth-tab.active {
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             box-shadow: var(--shadow-3d);
         }
 
@@ -641,8 +638,8 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             color: var(--modern-danger);
             font-size: 1.2rem;
             cursor: pointer;
@@ -659,7 +656,7 @@
         }
 
         .close-auth-modal:hover {
-            background: rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.2);
             color: var(--modern-danger);
             transform: scale(1.1);
         }
@@ -668,6 +665,8 @@
         .app-container {
             display: none;
             min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         /* Main Content */
@@ -675,6 +674,8 @@
             margin-top: 80px;
             padding: 2rem 0;
             min-height: calc(100vh - 200px);
+            width: 100%;
+            overflow-x: hidden;
         }
 
         /* Dashboard Grid */
@@ -683,17 +684,19 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.2rem;
             margin-bottom: 2rem;
+            width: 100%;
         }
 
         .stat-card {
             background: var(--gradient-card);
             border-radius: 15px;
             padding: 1.5rem;
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow-3d);
+            width: 100%;
         }
 
         .stat-card::before {
@@ -703,7 +706,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
             transition: left 0.5s;
         }
 
@@ -714,7 +717,7 @@
         .stat-card:hover {
             transform: translateY(-5px);
             border-color: var(--modern-secondary);
-            box-shadow: 0 20px 40px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1);
         }
 
         .stat-icon {
@@ -731,11 +734,10 @@
             font-family: 'Orbitron', sans-serif;
             color: var(--modern-secondary);
             margin-bottom: 0.3rem;
-            text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
         }
 
         .stat-label {
-            color: #a0a0c0;
+            color: #64748b;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.2px;
@@ -744,7 +746,7 @@
         /* Tabs */
         .tabs {
             display: flex;
-            background: rgba(20, 20, 45, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             margin-bottom: 2rem;
             overflow-x: auto;
@@ -753,7 +755,9 @@
             scrollbar-width: thin;
             scrollbar-color: var(--modern-secondary) transparent;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
         }
 
         .tabs::-webkit-scrollbar {
@@ -773,7 +777,7 @@
             padding: 0.8rem 1rem;
             background: none;
             border: none;
-            color: var(--light);
+            color: #334155;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -787,22 +791,36 @@
         }
 
         .tab-btn:hover {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.1);
         }
 
         .tab-btn.active {
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             box-shadow: var(--shadow-3d);
         }
 
         .tab-content {
             display: none;
             animation: fadeIn 0.5s ease;
+            width: 100%;
         }
 
         .tab-content.active {
             display: block;
+        }
+
+        /* Fix for table overflow on mobile */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .table-container table {
+            min-width: 600px;
         }
 
         /* Investment Plans - LEFT TO RIGHT */
@@ -812,13 +830,14 @@
             gap: 1.5rem;
             margin-top: 1.5rem;
             justify-content: flex-start;
+            width: 100%;
         }
 
         .plan-card {
             background: var(--gradient-card);
             border-radius: 15px;
             padding: 1.8rem;
-            border: 2px solid rgba(0, 255, 157, 0.3);
+            border: 2px solid rgba(16, 185, 129, 0.2);
             transition: all 0.3s;
             text-align: center;
             position: relative;
@@ -827,17 +846,18 @@
             min-width: 280px;
             max-width: 320px;
             box-shadow: var(--shadow-3d);
+            width: 100%;
         }
 
         .plan-card.already-invested {
             opacity: 0.7;
-            border-color: rgba(239, 68, 68, 0.3);
+            border-color: rgba(239, 68, 68, 0.2);
         }
 
         .plan-card.popular {
             border-color: var(--modern-accent);
             transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.1);
         }
 
         .plan-card.popular::before {
@@ -846,12 +866,12 @@
             top: 12px;
             right: -28px;
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             padding: 4px 25px;
             font-size: 0.7rem;
             font-weight: bold;
             transform: rotate(45deg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         .plan-icon {
@@ -867,13 +887,13 @@
             top: 10px;
             left: 10px;
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             padding: 4px 10px;
             border-radius: 15px;
             font-size: 0.7rem;
             font-weight: bold;
             z-index: 1;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         /* Leadership Rewards */
@@ -882,24 +902,26 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
+            width: 100%;
         }
 
         .reward-card {
             background: var(--gradient-card);
             border-radius: 15px;
             padding: 1.8rem;
-            border: 2px solid rgba(168, 85, 247, 0.3);
+            border: 2px solid rgba(139, 92, 246, 0.2);
             transition: all 0.3s;
             text-align: center;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow-3d);
+            width: 100%;
         }
 
         .reward-card.achieved {
             border-color: var(--modern-secondary);
-            background: linear-gradient(135deg, rgba(20, 20, 45, 0.95) 0%, rgba(0, 255, 157, 0.1) 100%);
-            box-shadow: 0 20px 40px rgba(0, 255, 157, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(16, 185, 129, 0.05) 100%);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1);
         }
 
         .reward-icon {
@@ -915,12 +937,12 @@
             top: 8px;
             left: 8px;
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             padding: 4px 12px;
             border-radius: 15px;
             font-size: 0.7rem;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         /* Level Income */
@@ -929,15 +951,17 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.2rem;
             margin-top: 1.5rem;
+            width: 100%;
         }
 
         .level-card {
             background: var(--gradient-card);
             border-radius: 15px;
             padding: 1.5rem;
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             text-align: center;
             box-shadow: var(--shadow-3d);
+            width: 100%;
         }
 
         .level-number {
@@ -945,7 +969,6 @@
             font-weight: 900;
             color: var(--modern-secondary);
             margin-bottom: 0.8rem;
-            text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
         }
 
         /* Network Tree */
@@ -957,6 +980,8 @@
             margin: 1.5rem 0;
             overflow-x: auto;
             padding: 0.8rem;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
         }
 
         .tree-level {
@@ -975,25 +1000,25 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: var(--dark);
+            color: white;
             font-weight: bold;
             position: relative;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.9rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         .tree-node:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1);
         }
 
         .tree-node.you {
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             animation: pulse 2s infinite;
-            box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.1);
         }
 
         @keyframes pulse {
@@ -1011,7 +1036,7 @@
             height: 420px;
             background: var(--gradient-card);
             border-radius: 15px;
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             display: none;
             flex-direction: column;
             z-index: 1001;
@@ -1030,7 +1055,7 @@
 
         .chat-header {
             padding: 0.8rem;
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             border-radius: 15px 15px 0 0;
             display: flex;
             justify-content: space-between;
@@ -1057,18 +1082,19 @@
         .message.user {
             align-self: flex-end;
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
         }
 
         .message.bot {
             align-self: flex-start;
-            background: rgba(168, 85, 247, 0.2);
-            border: 1px solid rgba(168, 85, 247, 0.5);
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            color: #334155;
         }
 
         .chat-input {
             padding: 0.8rem;
-            border-top: 1px solid rgba(0, 255, 157, 0.2);
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
             display: flex;
             gap: 0.4rem;
         }
@@ -1076,10 +1102,10 @@
         .chat-input input {
             flex: 1;
             padding: 0.6rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             border-radius: 6px;
-            color: var(--light);
+            color: #334155;
             font-size: 0.9rem;
         }
 
@@ -1090,7 +1116,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             display: none;
             justify-content: center;
             align-items: center;
@@ -1111,7 +1137,7 @@
             max-width: 500px;
             border-radius: 20px;
             padding: 2rem;
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             position: relative;
             box-shadow: var(--shadow-3d);
             margin: auto;
@@ -1123,8 +1149,8 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             color: var(--modern-danger);
             font-size: 1.2rem;
             cursor: pointer;
@@ -1141,7 +1167,7 @@
         }
 
         .close-modal:hover {
-            background: rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.2);
             color: var(--modern-danger);
             transform: scale(1.1);
         }
@@ -1160,9 +1186,9 @@
 
         .admin-tab-btn {
             padding: 0.6rem 1rem;
-            background: rgba(0, 255, 157, 0.1);
-            border: 1px solid rgba(0, 255, 157, 0.3);
-            color: var(--light);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #334155;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s;
@@ -1170,7 +1196,7 @@
 
         .admin-tab-btn.active {
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
         }
 
         .admin-tab-content {
@@ -1187,7 +1213,7 @@
             bottom: 20px;
             right: 90px;
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -1197,20 +1223,20 @@
             font-size: 1.2rem;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
             transition: all 0.3s;
         }
 
         .admin-panel-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.6);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
         }
 
         /* Buttons */
         .btn {
             padding: 0.7rem 1.5rem;
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             border: none;
             border-radius: 8px;
             font-weight: 600;
@@ -1226,7 +1252,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.15);
         }
 
         .btn:active {
@@ -1239,7 +1265,7 @@
 
         .btn-warning {
             background: var(--gradient-gold);
-            color: var(--dark);
+            color: #1e293b;
         }
 
         .btn-danger {
@@ -1248,8 +1274,8 @@
         }
 
         .btn-purple {
-            background: var(--gradient-button);
-            color: var(--dark);
+            background: var(--gradient-purple);
+            color: white;
         }
 
         .btn-small {
@@ -1265,7 +1291,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.4rem;
-            color: #cbd5e1;
+            color: #475569;
             font-weight: 500;
             font-size: 0.9rem;
         }
@@ -1273,10 +1299,10 @@
         .form-control {
             width: 100%;
             padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             border-radius: 8px;
-            color: var(--light);
+            color: #334155;
             font-size: 0.9rem;
             transition: all 0.3s;
         }
@@ -1284,8 +1310,8 @@
         .form-control:focus {
             outline: none;
             border-color: var(--modern-secondary);
-            box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.2);
-            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+            background: white;
         }
 
         /* Tables */
@@ -1293,14 +1319,15 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 8px;
             overflow: hidden;
             font-size: 0.9rem;
+            box-shadow: var(--shadow);
         }
 
         .data-table th {
-            background: rgba(0, 255, 157, 0.2);
+            background: rgba(16, 185, 129, 0.1);
             padding: 0.8rem;
             text-align: left;
             font-weight: 600;
@@ -1309,20 +1336,21 @@
 
         .data-table td {
             padding: 0.8rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .data-table tr:hover {
-            background: rgba(0, 255, 157, 0.05);
+            background: rgba(16, 185, 129, 0.05);
         }
 
         /* Footer */
         footer {
-            background: rgba(15, 15, 35, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             padding: 2rem 0;
             margin-top: 3rem;
-            border-top: 1px solid rgba(0, 255, 157, 0.1);
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
             backdrop-filter: blur(10px);
+            width: 100%;
         }
 
         .footer-grid {
@@ -1342,7 +1370,7 @@
         .notification {
             background: var(--gradient-card);
             border-left: 4px solid var(--modern-secondary);
-            color: white;
+            color: #334155;
             padding: 0.8rem 1.2rem;
             border-radius: 8px;
             margin-bottom: 0.8rem;
@@ -1386,7 +1414,7 @@
             bottom: 20px;
             left: 20px;
             background: var(--gradient-button);
-            color: var(--dark);
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -1396,13 +1424,13 @@
             font-size: 1.2rem;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
             transition: all 0.3s;
         }
 
         .marketplace-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.6);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
         }
 
         /* Crypto Bot Modal */
@@ -1430,7 +1458,7 @@
 
         .bot-header {
             padding: 1rem;
-            background: rgba(168, 85, 247, 0.2);
+            background: rgba(139, 92, 246, 0.1);
             border-radius: 20px 20px 0 0;
             display: flex;
             justify-content: space-between;
@@ -1442,12 +1470,13 @@
         }
 
         .bot-message {
-            background: rgba(168, 85, 247, 0.1);
+            background: rgba(139, 92, 246, 0.05);
             padding: 0.8rem;
             border-radius: 8px;
             margin-bottom: 0.8rem;
             border-left: 4px solid var(--modern-accent);
             font-size: 0.9rem;
+            color: #334155;
         }
 
         .bot-options {
@@ -1458,18 +1487,19 @@
         }
 
         .bot-option {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.05);
             padding: 0.8rem;
             border-radius: 8px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             font-size: 0.85rem;
+            color: #334155;
         }
 
         .bot-option:hover {
-            background: rgba(0, 255, 157, 0.2);
+            background: rgba(16, 185, 129, 0.1);
             transform: translateY(-2px);
         }
 
@@ -1494,7 +1524,7 @@
         }
 
         .referral-link-container {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             padding: 0.8rem;
             border-radius: 8px;
             margin: 0.8rem 0;
@@ -1506,22 +1536,23 @@
         .referral-link {
             flex: 1;
             padding: 0.6rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 6px;
             word-break: break-all;
             font-size: 0.85rem;
+            color: #334155;
         }
 
         /* Copy Button Animation */
         .copy-success {
             background: var(--modern-secondary) !important;
-            color: var(--dark) !important;
+            color: white !important;
         }
 
         /* Progress Bars */
         .progress-bar {
             height: 6px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
             border-radius: 3px;
             overflow: hidden;
             margin-top: 0.5rem;
@@ -1542,7 +1573,7 @@
             width: 280px;
             height: calc(100vh - 80px);
             background: var(--gradient-card);
-            border-left: 1px solid rgba(0, 255, 157, 0.2);
+            border-left: 1px solid rgba(16, 185, 129, 0.1);
             z-index: 900;
             overflow-y: auto;
             padding: 1.5rem;
@@ -1553,7 +1584,7 @@
 
         .profile-sidebar.active {
             transform: translateX(0);
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
         }
 
         .profile-sidebar-header {
@@ -1562,13 +1593,13 @@
             align-items: center;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
         }
 
         .profile-close-btn {
             background: none;
             border: none;
-            color: var(--light);
+            color: #334155;
             font-size: 1.2rem;
             cursor: pointer;
             padding: 0.5rem;
@@ -1577,17 +1608,17 @@
         }
 
         .profile-close-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
+            background: rgba(239, 68, 68, 0.1);
             color: var(--modern-danger);
         }
 
         .profile-info-card {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.05);
             border-radius: 10px;
             padding: 1.2rem;
             margin-bottom: 1.5rem;
             text-align: center;
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.1);
         }
 
         .profile-avatar {
@@ -1602,17 +1633,19 @@
             font-weight: bold;
             margin: 0 auto 1rem;
             border: 3px solid var(--modern-secondary);
-            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.1);
+            color: white;
         }
 
         /* Investment Timer */
         .investment-timer {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(16, 185, 129, 0.05);
             padding: 0.8rem;
             border-radius: 8px;
             margin: 1rem 0;
             font-size: 0.9rem;
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            color: #334155;
         }
 
         .timer-display {
@@ -1620,7 +1653,6 @@
             font-size: 1.2rem;
             color: var(--modern-secondary);
             margin-top: 0.3rem;
-            text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
         }
 
         /* Responsive */
@@ -1646,11 +1678,11 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(15, 15, 35, 0.98);
+                background: rgba(255, 255, 255, 0.98);
                 flex-direction: column;
                 padding: 1rem;
                 backdrop-filter: blur(15px);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
                 z-index: 1001;
             }
 
@@ -1813,6 +1845,7 @@
 
             .container {
                 width: 95%;
+                padding: 0 10px;
             }
 
             .auth-container {
@@ -1876,6 +1909,16 @@
             .plans-overview {
                 grid-template-columns: 1fr;
             }
+            
+            /* Prevent overflow on very small devices */
+            body, html {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
+            }
+            
+            .app-container, .company-overview {
+                overflow-x: hidden !important;
+            }
         }
 
         /* Status Badges */
@@ -1887,19 +1930,28 @@
             font-weight: bold;
         }
 
-        .status-active {
-            background: rgba(0, 255, 157, 0.2);
-            color: var(--modern-secondary);
+        .status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--modern-warning);
+            border: 1px solid rgba(245, 158, 11, 0.2);
         }
 
-        .status-pending {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--modern-warning);
+        .status-approved {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--modern-secondary);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status-rejected {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--modern-danger);
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
         .status-completed {
-            background: rgba(168, 85, 247, 0.2);
+            background: rgba(139, 92, 246, 0.1);
             color: var(--modern-accent);
+            border: 1px solid rgba(139, 92, 246, 0.2);
         }
 
         /* QR Code */
@@ -1913,7 +1965,7 @@
             width: 180px;
             height: 180px;
             border-radius: 8px;
-            border: 2px solid rgba(0, 255, 157, 0.3);
+            border: 2px solid rgba(16, 185, 129, 0.2);
         }
 
         /* Quick Actions */
@@ -1922,27 +1974,32 @@
             flex-wrap: wrap;
             gap: 0.8rem;
             margin: 1.5rem 0;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 5px;
         }
 
         /* Welcome Section */
         .dashboard-header {
             margin-bottom: 1.5rem;
             padding: 1rem;
-            background: rgba(0, 255, 157, 0.05);
+            background: rgba(16, 185, 129, 0.03);
             border-radius: 15px;
-            border: 1px solid rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.1);
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow-3d);
+            width: 100%;
+            overflow-x: hidden;
         }
         
-        /* Investment Plan Inputs - FIXED */
+        /* Investment Plan Inputs */
         .plan-amount-input {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(255, 255, 255, 0.95);
+            color: #334155;
             font-size: 1rem;
             text-align: center;
             -moz-appearance: textfield;
@@ -1957,14 +2014,15 @@
         .plan-amount-input:focus {
             outline: none;
             border-color: var(--modern-secondary);
-            box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.2);
-            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+            background: white;
         }
         
         /* Prevent overflow on mobile */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
+            position: relative;
         }
         
         .modal-content::-webkit-scrollbar {
@@ -1993,9 +2051,9 @@
         
         /* Glass Morphism */
         .glass {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
         
         /* Floating Animation */
@@ -2006,6 +2064,100 @@
         
         .floating {
             animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Fix for deposit/withdrawal status colors */
+        .status-pending { color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+        .status-approved { color: #10b981; background: rgba(16, 185, 129, 0.1); }
+        .status-rejected { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+        .status-completed { color: #8b5cf6; background: rgba(139, 92, 246, 0.1); }
+        
+        /* Mobile Optimizations */
+        .mobile-optimized-table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .mobile-optimized-table table {
+            min-width: 600px;
+            width: 100%;
+        }
+        
+        .business-summary-mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .business-summary-mobile > div {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            background: rgba(16,185,129,0.05);
+            border-radius: 8px;
+            width: 100%;
+        }
+        
+        /* Fix for transaction history overflow */
+        .transaction-history-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .transaction-section {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Recent Activity Fix */
+        .recent-activity-container {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Fix for dashboard layout on mobile */
+        @media (max-width: 768px) {
+            .dashboard-header > div:first-child {
+                width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .quick-actions {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+            }
+            
+            .quick-actions .btn {
+                min-width: 150px;
+                flex-shrink: 0;
+            }
+            
+            #dashboard > div {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .business-summary-mobile {
+                margin-top: 1rem;
+            }
+            
+            .transaction-history-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .table-container {
+                min-height: 200px;
+            }
         }
     </style>
 </head>
@@ -2070,7 +2222,7 @@
         <div class="profile-info-card">
             <div class="profile-avatar" id="sidebarAvatar">U</div>
             <h3 id="sidebarName">User Name</h3>
-            <p id="sidebarEmail" style="font-size: 0.9rem; color: #a0a0c0;">user@email.com</p>
+            <p id="sidebarEmail" style="font-size: 0.9rem; color: #64748b;">user@email.com</p>
             <div style="margin-top: 1rem;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
                     <span>Rank:</span>
@@ -2093,13 +2245,13 @@
         
         <div style="margin-bottom: 1.5rem;">
             <h4 style="margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-wallet"></i> Wallet Info</h4>
-            <div style="background: rgba(20, 20, 45, 0.5); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
+            <div style="background: rgba(255, 255, 255, 0.5); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
                 <div style="margin-bottom: 0.5rem;">
-                    <div style="color: #a0a0c0;">Wallet Address:</div>
+                    <div style="color: #64748b;">Wallet Address:</div>
                     <div style="word-break: break-all; font-size: 0.8rem;" id="sidebarWallet">0x000...0000</div>
                 </div>
                 <div>
-                    <div style="color: #a0a0c0;">Join Date:</div>
+                    <div style="color: #64748b;">Join Date:</div>
                     <div id="sidebarJoinDate">2023-01-01</div>
                 </div>
             </div>
@@ -2107,7 +2259,7 @@
         
         <div>
             <h4 style="margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-chart-line"></i> Quick Stats</h4>
-            <div style="background: rgba(20, 20, 45, 0.5); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
+            <div style="background: rgba(255, 255, 255, 0.5); padding: 0.8rem; border-radius: 8px; font-size: 0.85rem;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
                     <span>Total Earned:</span>
                     <strong id="sidebarTotalEarned">0 USDT</strong>
@@ -2147,7 +2299,7 @@
                         Advanced Crypto MLM Platform with 9-Level Team Commission & Leadership Rewards
                     </div>
                     
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #cbd5e1;">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #475569;">
                         Join thousands of investors earning daily returns of 6-7.5% with our secure USDT BEP20 investment platform. 
                         Build your team across 9 levels and claim exciting leadership rewards.
                     </p>
@@ -2196,7 +2348,7 @@
                                 <i class="fas fa-shield-alt"></i>
                             </div>
                             <h3>Security First</h3>
-                            <p style="color: #a0a0c0;">USDT BEP20 transactions with advanced security protocols</p>
+                            <p style="color: #64748b;">USDT BEP20 transactions with advanced security protocols</p>
                         </div>
                         
                         <div style="text-align: center;">
@@ -2204,7 +2356,7 @@
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <h3>High Returns</h3>
-                            <p style="color: #a0a0c0;">6-7.5% daily returns with principal included in all plans</p>
+                            <p style="color: #64748b;">6-7.5% daily returns with principal included in all plans</p>
                         </div>
                         
                         <div style="text-align: center;">
@@ -2212,7 +2364,7 @@
                                 <i class="fas fa-users"></i>
                             </div>
                             <h3>Team Building</h3>
-                            <p style="color: #a0a0c0;">Earn from 9 levels of your network with up to 8% commission</p>
+                            <p style="color: #64748b;">Earn from 9 levels of your network with up to 8% commission</p>
                         </div>
                     </div>
                 </div>
@@ -2223,7 +2375,7 @@
         <section class="features-section" id="features">
             <div class="container">
                 <h2 style="text-align: center; margin-bottom: 1rem;">Why Choose CryptoWealth Pro?</h2>
-                <p style="text-align: center; margin-bottom: 3rem; color: #a0a0c0; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="text-align: center; margin-bottom: 3rem; color: #64748b; max-width: 800px; margin-left: auto; margin-right: auto;">
                     Our platform combines the best of cryptocurrency investment with multi-level marketing to create 
                     unprecedented earning opportunities for our members.
                 </p>
@@ -2302,7 +2454,7 @@
         <section class="investment-plans-section" id="plans">
             <div class="container">
                 <h2 style="text-align: center; margin-bottom: 1rem;">Investment Plans Overview</h2>
-                <p style="text-align: center; margin-bottom: 3rem; color: #a0a0c0; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="text-align: center; margin-bottom: 3rem; color: #64748b; max-width: 800px; margin-left: auto; margin-right: auto;">
                     Choose from our range of investment plans designed to suit every budget and investment goal. 
                     Minimum investment $5, maximum $5000.
                 </p>
@@ -2360,7 +2512,7 @@
             <div class="container">
                 <div class="cta-content">
                     <h2>Start Your Crypto Wealth Journey Today</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #cbd5e1;">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #475569;">
                         Join CryptoWealth Pro and unlock your financial potential. 
                         Create your account in minutes and start investing from as little as $5.
                     </p>
@@ -2374,8 +2526,8 @@
                         </button>
                     </div>
                     
-                    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <p style="color: #a0a0c0; font-size: 0.9rem;">
+                    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <p style="color: #64748b; font-size: 0.9rem;">
                             <i class="fas fa-shield-alt"></i> 256-bit SSL Encryption • 
                             <i class="fas fa-user-check"></i> 10,000+ Active Members • 
                             <i class="fas fa-money-check-alt"></i> $2M+ Paid Out
@@ -2394,7 +2546,7 @@
                             <i class="fas fa-coins"></i>
                             CryptoWealth Pro
                         </div>
-                        <p style="margin-top: 0.8rem; color: #a0a0c0; font-size: 0.9rem;">
+                        <p style="margin-top: 0.8rem; color: #64748b; font-size: 0.9rem;">
                             Advanced Crypto MLM Platform with Leadership Rewards & 9-Level Team Commission
                         </p>
                     </div>
@@ -2402,25 +2554,25 @@
                     <div>
                         <h4 style="font-size: 1rem;">Quick Links</h4>
                         <ul style="list-style: none; margin-top: 0.8rem;">
-                            <li><a href="#" onclick="scrollToSection('hero')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Home</a></li>
-                            <li><a href="#" onclick="scrollToSection('mission')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Mission</a></li>
-                            <li><a href="#" onclick="scrollToSection('features')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Features</a></li>
-                            <li><a href="#" onclick="scrollToSection('plans')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Plans</a></li>
+                            <li><a href="#" onclick="scrollToSection('hero')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Home</a></li>
+                            <li><a href="#" onclick="scrollToSection('mission')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Mission</a></li>
+                            <li><a href="#" onclick="scrollToSection('features')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Features</a></li>
+                            <li><a href="#" onclick="scrollToSection('plans')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Plans</a></li>
                         </ul>
                     </div>
                     
                     <div>
                         <h4 style="font-size: 1rem;">Contact</h4>
-                        <p style="margin-top: 0.8rem; color: #a0a0c0; font-size: 0.9rem;">
+                        <p style="margin-top: 0.8rem; color: #64748b; font-size: 0.9rem;">
                             <i class="fas fa-envelope"></i> support@cryptowealth.pro<br>
                             <i class="fas fa-globe"></i> cryptowealth.pro
                         </p>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
                     <p style="font-size: 0.9rem;">© 2023 CryptoWealth Pro. All rights reserved.</p>
-                    <p style="font-size: 0.8rem; color: #a0a0c0;">
+                    <p style="font-size: 0.8rem; color: #64748b;">
                         Cryptocurrency investments involve risk. Please invest responsibly.
                     </p>
                 </div>
@@ -2476,7 +2628,7 @@
                     <i class="fas fa-sign-in-alt"></i> Login to Account
                 </button>
                 
-                <div style="text-align: center; margin-top: 1.5rem; color: #a0a0c0; font-size: 0.9rem;">
+                <div style="text-align: center; margin-top: 1.5rem; color: #64748b; font-size: 0.9rem;">
                     Don't have an account? <a href="#" style="color: var(--modern-secondary);" onclick="switchAuthTab('signup')">Sign up here</a>
                 </div>
             </form>
@@ -2530,7 +2682,7 @@
                     <i class="fas fa-user-plus"></i> Create Account
                 </button>
                 
-                <div style="text-align: center; margin-top: 1.5rem; color: #a0a0c0; font-size: 0.9rem;">
+                <div style="text-align: center; margin-top: 1.5rem; color: #64748b; font-size: 0.9rem;">
                     Already have an account? <a href="#" style="color: var(--modern-secondary);" onclick="switchAuthTab('login')">Login here</a>
                 </div>
             </form>
@@ -2576,7 +2728,7 @@
                         </div>
                         <div class="stat-value" id="balanceAmount">0 USDT</div>
                         <div class="stat-label">Total Balance</div>
-                        <div class="stat-sub" style="font-size: 0.8rem; color: #a0a0c0;">Available for withdrawal</div>
+                        <div class="stat-sub" style="font-size: 0.8rem; color: #64748b;">Available for withdrawal</div>
                     </div>
 
                     <div class="stat-card card-3d">
@@ -2585,7 +2737,7 @@
                         </div>
                         <div class="stat-value" id="todayEarnings">+0 USDT</div>
                         <div class="stat-label">Today's Earnings</div>
-                        <div class="stat-sub" style="font-size: 0.8rem; color: #a0a0c0;">Live updating</div>
+                        <div class="stat-sub" style="font-size: 0.8rem; color: #64748b;">Live updating</div>
                     </div>
 
                     <div class="stat-card card-3d">
@@ -2594,7 +2746,7 @@
                         </div>
                         <div class="stat-value" id="totalReferrals">0</div>
                         <div class="stat-label">Total Team</div>
-                        <div class="stat-sub" style="font-size: 0.8rem; color: #a0a0c0;">Across 9 levels</div>
+                        <div class="stat-sub" style="font-size: 0.8rem; color: #64748b;">Across 9 levels</div>
                     </div>
 
                     <div class="stat-card card-3d">
@@ -2603,7 +2755,7 @@
                         </div>
                         <div class="stat-value" id="userRank">Bronze</div>
                         <div class="stat-label">Current Rank</div>
-                        <div class="stat-sub" style="font-size: 0.8rem; color: #a0a0c0;">Complete tasks to level up</div>
+                        <div class="stat-sub" style="font-size: 0.8rem; color: #64748b;">Complete tasks to level up</div>
                     </div>
                 </div>
 
@@ -2622,21 +2774,23 @@
                 <!-- Dashboard Tab -->
                 <div id="dashboard" class="tab-content active">
                     <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
-                        <div>
+                        <div class="recent-activity-container">
                             <h3><i class="fas fa-history"></i> Recent Activity</h3>
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Time</th>
-                                        <th>Activity</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="recentActivity">
-                                    <tr><td colspan="4" style="text-align: center; padding: 2rem;">No recent activity</td></tr>
-                                </tbody>
-                            </table>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Activity</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentActivity">
+                                        <tr><td colspan="4" style="text-align: center; padding: 2rem;">No recent activity</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         
                         <div>
@@ -2657,7 +2811,7 @@
                             </div>
                             
                             <h3 style="margin-top: 1.5rem;"><i class="fas fa-business-time"></i> Business Summary</h3>
-                            <div style="background: rgba(0,255,157,0.1); padding: 1rem; border-radius: 8px; margin-top: 0.8rem;">
+                            <div class="business-summary-mobile">
                                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
                                     <span>Self Business:</span>
                                     <strong id="selfBusiness">0 USDT</strong>
@@ -2690,22 +2844,24 @@
                     
                     <div style="margin-top: 2rem;">
                         <h3><i class="fas fa-history"></i> Investment History</h3>
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Plan</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                    <th>Daily Return</th>
-                                    <th>Days Left</th>
-                                    <th>Total Earned</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="investmentHistory">
-                                <tr><td colspan="7" style="text-align: center; padding: 2rem;">No investment history</td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Plan</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Daily Return</th>
+                                        <th>Days Left</th>
+                                        <th>Total Earned</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="investmentHistory">
+                                    <tr><td colspan="7" style="text-align: center; padding: 2rem;">No investment history</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -2724,19 +2880,21 @@
                     
                     <div style="margin-top: 2rem;">
                         <h3><i class="fas fa-award"></i> Claimed Rewards</h3>
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Reward</th>
-                                    <th>Requirements</th>
-                                    <th>Claim Date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="claimedRewards">
-                                <tr><td colspan="4" style="text-align: center; padding: 2rem;">No rewards claimed yet</td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Reward</th>
+                                        <th>Requirements</th>
+                                        <th>Claim Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="claimedRewards">
+                                    <tr><td colspan="4" style="text-align: center; padding: 2rem;">No rewards claimed yet</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -2838,7 +2996,7 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 1.5rem; padding: 1.2rem; background: rgba(0,255,157,0.1); border-radius: 10px;">
+                    <div style="margin-top: 1.5rem; padding: 1.2rem; background: rgba(16,185,129,0.05); border-radius: 10px;">
                         <h3><i class="fas fa-calculator"></i> Total Team Commission</h3>
                         <div class="stat-value" id="totalTeamCommission">0 USDT</div>
                         <div class="stat-label">Total earnings from all 9 levels</div>
@@ -2905,58 +3063,64 @@
                     </div>
                     
                     <h3 style="margin-top: 1.5rem;"><i class="fas fa-chart-bar"></i> Earning Sources</h3>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Source</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="earningsTable">
-                            <tr><td colspan="4" style="text-align: center; padding: 2rem;">No earnings yet</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Source</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="earningsTable">
+                                <tr><td colspan="4" style="text-align: center; padding: 2rem;">No earnings yet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Transactions Tab -->
                 <div id="transactions" class="tab-content">
                     <h2><i class="fas fa-exchange-alt"></i> Transaction History</h2>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
-                        <div>
+                    <div class="transaction-history-container">
+                        <div class="transaction-section">
                             <h3><i class="fas fa-arrow-down"></i> Deposits</h3>
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Amount</th>
-                                        <th>Method</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="depositsTable">
-                                    <tr><td colspan="4" style="text-align: center; padding: 2rem;">No deposits yet</td></tr>
-                                </tbody>
-                            </table>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Method</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="depositsTable">
+                                        <tr><td colspan="4" style="text-align: center; padding: 2rem;">No deposits yet</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div>
+                        <div class="transaction-section">
                             <h3><i class="fas fa-arrow-up"></i> Withdrawals</h3>
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Amount</th>
-                                        <th>Net Amount</th>
-                                        <th>Fee (12%)</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="withdrawalsTable">
-                                    <tr><td colspan="5" style="text-align: center; padding: 2rem;">No withdrawals yet</td></tr>
-                                </tbody>
-                            </table>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Net Amount</th>
+                                            <th>Fee (12%)</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="withdrawalsTable">
+                                        <tr><td colspan="5" style="text-align: center; padding: 2rem;">No withdrawals yet</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3020,7 +3184,7 @@
                 <div class="form-group">
                     <label>Amount (USDT)</label>
                     <input type="number" class="form-control" id="depositAmount" placeholder="5" min="5" max="5000" step="1">
-                    <small style="color: #a0a0c0; font-size: 0.85rem;">Minimum $5, Maximum $5000</small>
+                    <small style="color: #64748b; font-size: 0.85rem;">Minimum $5, Maximum $5000</small>
                 </div>
                 
                 <div class="qr-code">
@@ -3029,10 +3193,15 @@
                 
                 <div class="form-group">
                     <label>USDT BEP20 Wallet Address</label>
-                    <input type="text" class="form-control" id="depositAddress" value="" readonly>
+                    <div style="display: flex; gap: 0.4rem;">
+                        <input type="text" class="form-control" id="depositAddress" value="" readonly>
+                        <button class="btn btn-small" onclick="copyDepositAddress()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
                 </div>
                 
-                <div style="background: rgba(0,255,157,0.1); padding: 0.8rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem;">
+                <div style="background: rgba(16,185,129,0.05); padding: 0.8rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem;">
                     <p><i class="fas fa-info-circle"></i> Important Instructions:</p>
                     <ol style="margin-left: 1.2rem; margin-top: 0.5rem;">
                         <li>Send USDT via BEP20 network only</li>
@@ -3063,7 +3232,7 @@
                 
                 <h2><i class="fas fa-wallet"></i> Withdraw USDT</h2>
                 
-                <div style="background: rgba(0,255,157,0.1); padding: 0.8rem; border-radius: 8px; margin-bottom: 1.2rem; font-size: 0.9rem;">
+                <div style="background: rgba(16,185,129,0.05); padding: 0.8rem; border-radius: 8px; margin-bottom: 1.2rem; font-size: 0.9rem;">
                     <p><i class="fas fa-info-circle"></i> Available Balance: <strong id="availableBalance">0 USDT</strong></p>
                     <p>Minimum Withdrawal: <strong>1 USDT</strong></p>
                     <p>Withdrawal Fee: <strong id="withdrawalFeePercent">12%</strong></p>
@@ -3074,7 +3243,7 @@
                 <div class="form-group">
                     <label>Amount (USDT)</label>
                     <input type="number" class="form-control" id="withdrawAmount" placeholder="1" min="1">
-                    <small style="color: #a0a0c0; font-size: 0.85rem;">Minimum withdrawal: 1 USDT</small>
+                    <small style="color: #64748b; font-size: 0.85rem;">Minimum withdrawal: 1 USDT</small>
                 </div>
                 
                 <div class="form-group">
@@ -3250,42 +3419,44 @@
                 <!-- Deposit Requests Tab -->
                 <div id="adminDeposits" class="admin-tab-content">
                     <h3>Deposit Requests</h3>
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminDepositsTable">
-                            <tr><td colspan="5" style="text-align: center; padding: 2rem;">No deposit requests</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminDepositsTable">
+                                <tr><td colspan="5" style="text-align: center; padding: 2rem;">No deposit requests</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Withdrawal Requests Tab -->
                 <div id="adminWithdrawals" class="admin-tab-content">
                     <h3>Withdrawal Requests</h3>
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Amount</th>
-                                <th>Wallet</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminWithdrawalsTable">
-                            <tr><td colspan="6" style="text-align: center; padding: 2rem;">No withdrawal requests</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Wallet</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminWithdrawalsTable">
+                                <tr><td colspan="6" style="text-align: center; padding: 2rem;">No withdrawal requests</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- User Management Tab -->
@@ -3295,22 +3466,23 @@
                     <div class="form-group">
                         <input type="text" class="form-control" id="adminSearchUser" placeholder="Search by email, name or user ID">
                     </div>
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Balance</th>
-                                <th>Referrals</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminUsersTable">
-                            <tr><td colspan="6" style="text-align: center; padding: 2rem;">No users found</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Balance</th>
+                                    <th>Referrals</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminUsersTable">
+                                <tr><td colspan="6" style="text-align: center; padding: 2rem;">No users found</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3409,13 +3581,13 @@
                 <p style="margin-bottom: 1rem;">Share your referral link and earn commissions from 9 levels!</p>
                 
                 <div class="referral-link-container">
-                    <div class="referral-link" id="referralLinkText">https://cryptowealth.pro/ref/ABC123</div>
+                    <div class="referral-link" id="referralLinkText">https://cryptowealth-pro.netlify.app/#ref=ABC123</div>
                     <button class="btn btn-small" onclick="copyReferralLink()" id="copyBtn">
                         <i class="fas fa-copy"></i> Copy
                     </button>
                 </div>
                 
-                <div style="background: rgba(0,255,157,0.1); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; font-size: 0.9rem;">
+                <div style="background: rgba(16,185,129,0.05); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; font-size: 0.9rem;">
                     <h4 style="margin-bottom: 0.5rem;"><i class="fas fa-money-bill-wave"></i> Commission Structure</h4>
                     <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
                         <li>Level 1 (Direct Referrals): <strong id="level1PercentText">8%</strong></li>
@@ -3430,7 +3602,7 @@
                     </ul>
                 </div>
                 
-                <div style="background: rgba(168,85,247,0.1); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem;">
+                <div style="background: rgba(139,92,246,0.05); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem;">
                     <h4 style="margin-bottom: 0.5rem; font-size: 1rem;"><i class="fas fa-bullhorn"></i> Share Your Link</h4>
                     <div style="display: flex; gap: 0.4rem; margin-top: 0.5rem;">
                         <button class="btn btn-small" style="flex: 1;" onclick="shareOnFacebook()">
@@ -3460,31 +3632,31 @@
                             <i class="fas fa-coins"></i>
                             CryptoWealth Pro
                         </div>
-                        <p style="margin-top: 0.8rem; color: #a0a0c0; font-size: 0.9rem;">Advanced Crypto MLM Platform with Leadership Rewards & 9-Level Team Commission</p>
+                        <p style="margin-top: 0.8rem; color: #64748b; font-size: 0.9rem;">Advanced Crypto MLM Platform with Leadership Rewards & 9-Level Team Commission</p>
                     </div>
                     
                     <div>
                         <h4 style="font-size: 1rem;">Quick Links</h4>
                         <ul style="list-style: none; margin-top: 0.8rem;">
-                            <li><a href="#" onclick="switchTab('dashboard')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Dashboard</a></li>
-                            <li><a href="#" onclick="switchTab('plans')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Investment Plans</a></li>
-                            <li><a href="#" onclick="switchTab('rewards')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Leadership Rewards</a></li>
-                            <li><a href="#" onclick="switchTab('network')" style="color: #a0a0c0; text-decoration: none; font-size: 0.9rem;">Network</a></li>
+                            <li><a href="#" onclick="switchTab('dashboard')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Dashboard</a></li>
+                            <li><a href="#" onclick="switchTab('plans')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Investment Plans</a></li>
+                            <li><a href="#" onclick="switchTab('rewards')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Leadership Rewards</a></li>
+                            <li><a href="#" onclick="switchTab('network')" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">Network</a></li>
                         </ul>
                     </div>
                     
                     <div>
                         <h4 style="font-size: 1rem;">Contact</h4>
-                        <p style="margin-top: 0.8rem; color: #a0a0c0; font-size: 0.9rem;">
+                        <p style="margin-top: 0.8rem; color: #64748b; font-size: 0.9rem;">
                             <i class="fas fa-envelope"></i> support@cryptowealth.pro<br>
                             <i class="fas fa-globe"></i> cryptowealth.pro
                         </p>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
                     <p style="font-size: 0.9rem;">© 2023 CryptoWealth Pro. All rights reserved.</p>
-                    <p style="font-size: 0.8rem; color: #a0a0c0;">Cryptocurrency investments involve risk. Please invest responsibly.</p>
+                    <p style="font-size: 0.8rem; color: #64748b;">Cryptocurrency investments involve risk. Please invest responsibly.</p>
                 </div>
             </div>
         </footer>
@@ -3525,9 +3697,10 @@
         let depositAddress = "";
         let investmentIntervals = {};
         let profileSidebarOpen = false;
-        let userInvestedPlans = new Set(); // Track which plans user has already invested in
+        let userInvestedPlans = new Set();
         let nextEarningTime = null;
         let earningTimerInterval = null;
+        let currentDomain = window.location.origin;
 
         // ====================
         // INITIALIZATION
@@ -3547,12 +3720,10 @@
                         currentUser = user;
                         loadUserData();
                         showApp();
-                        // Setup plan calculators
                         setupPlanCalculators();
-                        // Setup withdrawal calculator
                         setupWithdrawalCalculator();
-                        // Update UI for logged in user
                         updateAuthUI(true);
+                        setupRealtimeListeners();
                     } else {
                         // User is signed out
                         showCompanyOverview();
@@ -3569,26 +3740,38 @@
         });
 
         // ====================
+        // SETUP REALTIME LISTENERS
+        // ====================
+        function setupRealtimeListeners() {
+            if (!currentUser) return;
+            
+            // Listen for user data changes
+            database.ref('users/' + currentUser.uid).on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    userData = snapshot.val();
+                    updateDashboard();
+                    updateTransactions();
+                }
+            });
+        }
+
+        // ====================
         // LOAD PUBLIC SETTINGS FROM FIREBASE
         // ====================
         function loadPublicSettings() {
-            // Load public settings
             database.ref('publicSettings').on('value', (snapshot) => {
                 const settings = snapshot.val();
                 if (settings) {
                     publicSettings = settings;
                     
-                    // Update deposit address
                     depositAddress = settings.depositWallet || "0x0000000000000000000000000000000000000000";
                     document.getElementById('depositAddress').value = depositAddress;
                     
-                    // Update QR code
                     const qrImg = document.getElementById('depositQRCode');
                     if (qrImg && depositAddress) {
                         qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(depositAddress)}`;
                     }
                     
-                    // Update other settings with minimum $5
                     if (settings.minDeposit) {
                         const minDeposit = Math.max(5, settings.minDeposit);
                         document.getElementById('minDepositAmount').textContent = minDeposit;
@@ -3604,7 +3787,6 @@
                         document.getElementById('feePercent').textContent = settings.withdrawalFee;
                     }
                     
-                    // Update deposit form limits with minimum $5
                     const depositInput = document.getElementById('depositAmount');
                     if (depositInput) {
                         const minDeposit = Math.max(5, settings.minDeposit || 5);
@@ -3614,7 +3796,6 @@
                         depositInput.value = minDeposit;
                     }
                 } else {
-                    // Set default values with minimum $5
                     const minDeposit = 5;
                     document.getElementById('minDepositAmount').textContent = minDeposit;
                     document.getElementById('maxDepositAmount').textContent = '5000';
@@ -3629,7 +3810,6 @@
                 }
             });
             
-            // Load investment plans from Firebase
             database.ref('public/plans').on('value', (snapshot) => {
                 const plans = snapshot.val() || {};
                 investmentPlans = {};
@@ -3647,7 +3827,6 @@
                     }
                 });
                 
-                // If no plans in Firebase, use default plans with minimum $5
                 if (Object.keys(investmentPlans).length === 0) {
                     investmentPlans = {
                         1: { min: 5, max: 100, dailyReturn: 6, days: 60, name: "Starter Plan", principalIncluded: true },
@@ -3657,13 +3836,11 @@
                     };
                 }
                 
-                // Update plans display if on plans page
                 if (document.getElementById('plans').classList.contains('active')) {
                     updatePlansDisplay();
                 }
             });
             
-            // Load leadership rewards from Firebase
             database.ref('public/rewards').on('value', (snapshot) => {
                 const rewards = snapshot.val() || {};
                 leadershipRewards = {};
@@ -3679,7 +3856,6 @@
                     }
                 });
                 
-                // If no rewards in Firebase, use default rewards
                 if (Object.keys(leadershipRewards).length === 0) {
                     leadershipRewards = {
                         1: { name: "iPhone 17 Pro Max", selfBusiness: 1000, teamBusiness: 3500, type: "gadget" },
@@ -3689,13 +3865,11 @@
                     };
                 }
                 
-                // Update rewards display if on rewards page
                 if (document.getElementById('rewards').classList.contains('active')) {
                     updateRewardsDisplay();
                 }
             });
             
-            // Load commission settings from Firebase
             database.ref('public/commissionSettings').on('value', (snapshot) => {
                 const settings = snapshot.val() || {};
                 commissionLevels = {};
@@ -3712,7 +3886,6 @@
                          i === 8 ? 1 : 1);
                 }
                 
-                // Update commission display
                 updateCommissionDisplay();
             });
         }
@@ -3737,12 +3910,10 @@
                 return;
             }
             
-            // Get user's invested plans
             const investedPlanIds = userData ? 
                 (userData.activeInvestments || []).map(inv => inv.planId) : [];
             userInvestedPlans = new Set(investedPlanIds);
             
-            // Sort plans by minimum investment (left to right)
             const sortedPlans = Object.entries(investmentPlans).sort((a, b) => a[1].min - b[1].min);
             
             sortedPlans.forEach(([id, plan]) => {
@@ -3754,7 +3925,6 @@
                     planCard.classList.add('already-invested');
                 }
                 
-                // Check if this is the popular plan (based on daily return)
                 const isPopular = plan.dailyReturn >= 7;
                 if (isPopular && !isInvested) {
                     planCard.classList.add('popular');
@@ -3782,7 +3952,7 @@
                                value="" step="1" oninput="updatePlanCalculator('${id}')">
                     </div>
                     
-                    <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(0,255,157,0.1); border-radius: 8px;">
+                    <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(16,185,129,0.05); border-radius: 8px;">
                         <div>Daily Earning: <strong id="plan${id}Daily">$0.00</strong></div>
                         <div>Total Return: <strong id="plan${id}Total">$0.00</strong></div>
                     </div>
@@ -3791,7 +3961,7 @@
                         <i class="fas fa-hand-holding-usd"></i> Invest Now
                     </button>
                     ` : `
-                    <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(239,68,68,0.1); border-radius: 8px;">
+                    <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(239,68,68,0.05); border-radius: 8px;">
                         <div><i class="fas fa-info-circle"></i> You have already invested in this plan</div>
                         <div>You cannot invest in the same plan multiple times</div>
                     </div>
@@ -3804,7 +3974,6 @@
                 
                 plansContainer.appendChild(planCard);
                 
-                // Initialize calculator for this plan
                 if (!isInvested) {
                     updatePlanCalculator(id);
                 }
@@ -3859,7 +4028,7 @@
                             Progress: <span id="reward${id}ProgressText">0%</span>
                         </div>
                     </div>
-                    <div style="margin: 1.2rem 0; padding: 0.8rem; background: rgba(0,255,157,0.1); border-radius: 8px; font-size: 0.85rem;">
+                    <div style="margin: 1.2rem 0; padding: 0.8rem; background: rgba(16,185,129,0.05); border-radius: 8px; font-size: 0.85rem;">
                         <div><i class="fas fa-info-circle"></i> Required: $${reward.selfBusiness} self + $${reward.teamBusiness} team</div>
                         <div><i class="fas fa-users"></i> Counted from multiple IDs</div>
                     </div>
@@ -3871,14 +4040,12 @@
                 rewardsContainer.appendChild(rewardCard);
             });
             
-            // Update progress after display
             if (userData) {
                 updateRewardsProgress();
             }
         }
 
         function updateCommissionDisplay() {
-            // Update commission percentages in the UI
             for (let i = 1; i <= 9; i++) {
                 const percentElement = document.getElementById(`level${i}Percent`);
                 const percentTextElement = document.getElementById(`level${i}PercentText`);
@@ -3901,27 +4068,37 @@
         // RESPONSIVE FIXES
         // ====================
         function preventOverflow() {
-            // Prevent horizontal scrolling on mobile
             document.body.style.overflowX = 'hidden';
+            document.body.style.maxWidth = '100vw';
             
-            // Handle viewport on mobile
             const viewportMeta = document.querySelector('meta[name="viewport"]');
             if (viewportMeta) {
-                viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+                viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover";
             }
             
-            // Fix for modals on mobile
             window.addEventListener('resize', handleResize);
             handleResize();
         }
         
         function handleResize() {
-            // Adjust modal padding on mobile
             if (window.innerWidth <= 768) {
                 document.querySelectorAll('.modal-content').forEach(modal => {
                     modal.style.padding = '1.2rem';
                 });
+                
+                // Adjust dashboard layout for mobile
+                const dashboardContent = document.querySelector('#dashboard > div');
+                if (dashboardContent) {
+                    dashboardContent.style.gridTemplateColumns = '1fr';
+                    dashboardContent.style.gap = '1rem';
+                }
             }
+            
+            // Force width containment
+            document.querySelectorAll('.container, .main-content, .app-container, .company-overview').forEach(el => {
+                el.style.maxWidth = '100vw';
+                el.style.overflowX = 'hidden';
+            });
         }
 
         // ====================
@@ -3930,7 +4107,6 @@
         function showCompanyOverview() {
             document.getElementById('companyOverview').style.display = 'block';
             document.getElementById('appContainer').style.display = 'none';
-            // Close profile sidebar if open
             profileSidebarOpen = false;
             document.getElementById('profileSidebar').classList.remove('active');
         }
@@ -3941,7 +4117,6 @@
             if (userData) {
                 updateDashboard();
                 updateSidebarProfile();
-                // Start next earning timer
                 startNextEarningTimer();
             }
         }
@@ -3960,7 +4135,6 @@
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
-                // Close mobile menu if open
                 document.getElementById('navLinks').classList.remove('active');
             }
         }
@@ -3974,11 +4148,9 @@
             const navLinks = document.getElementById('navLinks');
             
             if (isLoggedIn) {
-                // User is logged in
                 if (guestAuthButtons) guestAuthButtons.style.display = 'none';
                 if (userSection) userSection.style.display = 'flex';
                 
-                // Update navigation links for logged in user
                 if (navLinks) {
                     navLinks.innerHTML = `
                         <li><a href="#" onclick="switchTab('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
@@ -3995,11 +4167,9 @@
                     `;
                 }
             } else {
-                // User is not logged in
                 if (guestAuthButtons) guestAuthButtons.style.display = 'flex';
                 if (userSection) userSection.style.display = 'none';
                 
-                // Update navigation links for guest
                 if (navLinks) {
                     navLinks.innerHTML = `
                         <li><a href="#" onclick="scrollToSection('hero')"><i class="fas fa-home"></i> Home</a></li>
@@ -4033,7 +4203,6 @@
         }
 
         function switchAuthTab(tab) {
-            // Update active tab
             document.querySelectorAll('.auth-tab').forEach(t => {
                 t.classList.remove('active');
                 if (t.getAttribute('data-auth-tab') === tab) {
@@ -4041,7 +4210,6 @@
                 }
             });
             
-            // Update active form
             document.querySelectorAll('.auth-form').forEach(form => {
                 form.classList.remove('active');
                 if (form.id === tab + 'Form') {
@@ -4064,7 +4232,6 @@
             
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    // Auto login successful
                     showNotification('Login successful!', 'success');
                     closeAuthModal();
                 })
@@ -4073,7 +4240,7 @@
                 });
         });
 
-        // Signup Form Submission - Fixed: USDT Wallet made optional
+        // Signup Form Submission
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -4085,7 +4252,6 @@
             const referralCode = document.getElementById('referralCode').value;
             const usdtWallet = document.getElementById('usdtWallet').value;
             
-            // Validation - USDT Wallet is now optional
             if (!name || !email || !phone || !password || !confirmPassword) {
                 showNotification('Please fill all required fields', 'error');
                 return;
@@ -4101,15 +4267,12 @@
                 return;
             }
             
-            // Create user with Firebase Auth
             auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
                     
-                    // Generate referral code
                     const refCode = generateReferralCode(name);
                     
-                    // Create user data in Firebase - USDT wallet is optional
                     const userData = {
                         uid: user.uid,
                         name: name,
@@ -4117,7 +4280,7 @@
                         phone: phone,
                         referralCode: refCode,
                         upline: null,
-                        usdtWallet: usdtWallet || "", // Empty string if not provided
+                        usdtWallet: usdtWallet || "",
                         joinDate: new Date().toISOString(),
                         balance: 0,
                         totalEarnings: 0,
@@ -4158,7 +4321,6 @@
                         }
                     };
                     
-                    // Check if referral code exists and update upline
                     if (referralCode) {
                         database.ref('users').orderByChild('referralCode').equalTo(referralCode).once('value')
                             .then((snapshot) => {
@@ -4167,11 +4329,9 @@
                                     const uplineId = Object.keys(uplineData)[0];
                                     const upline = uplineData[uplineId];
                                     
-                                    // Update user's upline
                                     userData.upline = uplineId;
                                     userData.uplineCode = upline.referralCode;
                                     
-                                    // Update upline's referral count
                                     const updates = {};
                                     updates['users/' + uplineId + '/directReferrals'] = (upline.directReferrals || 0) + 1;
                                     updates['users/' + uplineId + '/levelCounts/level1'] = (upline.levelCounts?.level1 || 0) + 1;
@@ -4179,16 +4339,13 @@
                                     database.ref().update(updates);
                                 }
                                 
-                                // Save user data
                                 return database.ref('users/' + user.uid).set(userData);
                             });
                     } else {
-                        // Save user data without upline
                         return database.ref('users/' + user.uid).set(userData);
                     }
                 })
                 .then(() => {
-                    // AUTO LOGIN: Sign in the user after successful signup
                     return auth.signInWithEmailAndPassword(email, password);
                 })
                 .then((userCredential) => {
@@ -4204,10 +4361,8 @@
             if (confirm('Are you sure you want to logout?')) {
                 auth.signOut().then(() => {
                     showNotification('Logged out successfully', 'success');
-                    // Close profile sidebar if open
                     profileSidebarOpen = false;
                     document.getElementById('profileSidebar').classList.remove('active');
-                    // Clear earning timer
                     if (earningTimerInterval) {
                         clearInterval(earningTimerInterval);
                     }
@@ -4237,7 +4392,6 @@
             
             if (profileSidebarOpen) {
                 sidebar.classList.add('active');
-                // Close mobile menu if open
                 document.getElementById('navLinks').classList.remove('active');
                 updateSidebarProfile();
             } else {
@@ -4257,7 +4411,6 @@
             document.getElementById('sidebarReferrals').textContent = userData.directReferrals || 0;
             document.getElementById('sidebarBalance').textContent = userData.balance.toFixed(2) + ' USDT';
             
-            // Truncate wallet address for display
             const wallet = userData.usdtWallet || '';
             if (wallet.length > 20) {
                 document.getElementById('sidebarWallet').textContent = 
@@ -4301,15 +4454,11 @@
                     checkDailyBonusEligibility();
                     updateInvestmentHistory();
                     
-                    // Update sidebar profile
                     if (profileSidebarOpen) {
                         updateSidebarProfile();
                     }
                     
-                    // Start investment earnings if any active investments
                     startInvestmentEarnings();
-                    
-                    // Calculate next earning time
                     calculateNextEarningTime();
                 }
             });
@@ -4333,14 +4482,12 @@
         // APP FUNCTIONS
         // ====================
         function setupEventListeners() {
-            // Mobile menu
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navLinks = document.getElementById('navLinks');
             
             if (mobileMenuBtn && navLinks) {
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
-                    // Close profile sidebar if open
                     if (profileSidebarOpen) {
                         profileSidebarOpen = false;
                         document.getElementById('profileSidebar').classList.remove('active');
@@ -4348,7 +4495,6 @@
                 });
             }
             
-            // Auth tab switching
             document.querySelectorAll('.auth-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
                     const tabName = this.getAttribute('data-auth-tab');
@@ -4356,7 +4502,6 @@
                 });
             });
             
-            // Main tab switching
             document.querySelectorAll('.tab-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-tab');
@@ -4364,7 +4509,6 @@
                 });
             });
             
-            // Admin tab switching
             document.querySelectorAll('.admin-tab-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-admin-tab');
@@ -4372,7 +4516,6 @@
                 });
             });
             
-            // Chat input enter key
             const chatInput = document.getElementById('chatInput');
             if (chatInput) {
                 chatInput.addEventListener('keypress', function(e) {
@@ -4382,7 +4525,6 @@
                 });
             }
             
-            // Bot question enter key
             const botQuestion = document.getElementById('botQuestion');
             if (botQuestion) {
                 botQuestion.addEventListener('keypress', function(e) {
@@ -4392,7 +4534,6 @@
                 });
             }
             
-            // Close modals when clicking outside
             document.querySelectorAll('.modal').forEach(modal => {
                 modal.addEventListener('click', function(e) {
                     if (e.target === this) {
@@ -4401,14 +4542,12 @@
                 });
             });
             
-            // Close auth modal when clicking outside
             document.getElementById('authModal').addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeAuthModal();
                 }
             });
             
-            // Close sidebar when clicking outside on mobile
             document.addEventListener('click', function(e) {
                 const sidebar = document.getElementById('profileSidebar');
                 const userAvatar = document.getElementById('userAvatar');
@@ -4423,26 +4562,19 @@
                 }
             });
             
-            // Handle escape key to close modals and sidebar
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
-                    // Close all modals
                     document.querySelectorAll('.modal.active').forEach(modal => {
                         modal.classList.remove('active');
                     });
                     
-                    // Close auth modal
                     closeAuthModal();
-                    
-                    // Close crypto bot modal
                     document.getElementById('cryptoBotModal').classList.remove('active');
                     
-                    // Close chat
                     if (chatActive) {
                         hideChat();
                     }
                     
-                    // Close profile sidebar
                     if (profileSidebarOpen) {
                         profileSidebarOpen = false;
                         document.getElementById('profileSidebar').classList.remove('active');
@@ -4452,7 +4584,6 @@
         }
 
         function switchTab(tabId) {
-            // Update active tab button
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-tab') === tabId) {
@@ -4460,7 +4591,6 @@
                 }
             });
             
-            // Update active tab content
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
                 if (content.id === tabId) {
@@ -4468,10 +4598,8 @@
                 }
             });
             
-            // Close mobile menu if open
             document.getElementById('navLinks').classList.remove('active');
             
-            // Load specific tab data
             if (tabId === 'levels' && userData) {
                 updateLevelIncome();
             } else if (tabId === 'earnings' && userData) {
@@ -4485,14 +4613,12 @@
             } else if (tabId === 'network' && userData) {
                 updateNetworkTree();
             } else if (tabId === 'profile') {
-                // Close profile sidebar when opening profile tab
                 profileSidebarOpen = false;
                 document.getElementById('profileSidebar').classList.remove('active');
             }
         }
 
         function switchAdminTab(tabId) {
-            // Update active admin tab button
             document.querySelectorAll('.admin-tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-admin-tab') === tabId) {
@@ -4500,7 +4626,6 @@
                 }
             });
             
-            // Update active admin tab content
             document.querySelectorAll('.admin-tab-content').forEach(content => {
                 content.classList.remove('active');
                 if (content.id === 'admin' + tabId.charAt(0).toUpperCase() + tabId.slice(1)) {
@@ -4508,7 +4633,6 @@
                 }
             });
             
-            // Load specific admin tab data
             if (tabId === 'deposits') {
                 loadDepositRequests();
             } else if (tabId === 'withdrawals') {
@@ -4529,36 +4653,31 @@
         function updateDashboard() {
             if (!userData) return;
             
-            // Update user info
             document.getElementById('welcomeMessage').textContent = `Welcome, ${userData.name}`;
             document.getElementById('userInfo').textContent = `${userData.rank} Member | Level ${userData.level}`;
             
-            // Update avatar
             const initial = userData.name.charAt(0).toUpperCase();
             document.getElementById('userAvatar').textContent = initial;
             document.getElementById('profileAvatar').textContent = initial;
             
-            // Update stats
             document.getElementById('balanceAmount').textContent = userData.balance.toFixed(2) + ' USDT';
             document.getElementById('todayEarnings').textContent = '+' + calculateTodayEarnings().toFixed(2) + ' USDT';
             document.getElementById('totalReferrals').textContent = userData.directReferrals;
             document.getElementById('userRank').textContent = userData.rank;
             
-            // Update profile
             document.getElementById('profileName').textContent = userData.name;
             document.getElementById('profileEmail').textContent = userData.email;
             document.getElementById('userId').textContent = currentUser.uid.substring(0, 8);
             document.getElementById('joinDate').textContent = new Date(userData.joinDate).toLocaleDateString();
             document.getElementById('userReferralCode').textContent = userData.referralCode;
             
-            // Update settings form
             document.getElementById('settingsName').value = userData.name;
             document.getElementById('settingsEmail').value = userData.email;
             document.getElementById('settingsPhone').value = userData.phone || '';
             document.getElementById('walletAddress').value = userData.usdtWallet || '';
             
-            // Update recent activity
             updateRecentActivity();
+            updateBusinessSummary();
         }
 
         function updateRecentActivity() {
@@ -4567,7 +4686,6 @@
             const activityTable = document.getElementById('recentActivity');
             activityTable.innerHTML = '';
             
-            // Add recent transactions
             const transactions = userData.transactions || [];
             const recentTransactions = transactions.slice(-5).reverse();
             
@@ -4580,15 +4698,31 @@
                 const row = document.createElement('tr');
                 const time = new Date(transaction.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                 const amount = transaction.amount.toFixed(2);
-                let statusBadge = '';
                 
-                if (transaction.status === 'completed') {
-                    statusBadge = '<span class="status-badge status-completed">Completed</span>';
-                } else if (transaction.status === 'pending') {
-                    statusBadge = '<span class="status-badge status-pending">Pending</span>';
-                } else {
-                    statusBadge = '<span class="status-badge status-active">Active</span>';
+                // Determine status based on transaction type and status
+                let status = 'Success';
+                let statusClass = 'status-completed';
+                
+                if (transaction.type === 'deposit' || transaction.type === 'withdrawal') {
+                    if (transaction.status === 'pending') {
+                        status = 'Pending';
+                        statusClass = 'status-pending';
+                    } else if (transaction.status === 'approved' || transaction.status === 'completed') {
+                        status = 'Success';
+                        statusClass = 'status-completed';
+                    } else if (transaction.status === 'rejected') {
+                        status = 'Failed';
+                        statusClass = 'status-rejected';
+                    }
+                } else if (transaction.type === 'investment') {
+                    status = 'Active';
+                    statusClass = 'status-approved';
+                } else if (transaction.type === 'commission' || transaction.type === 'investment_earning' || transaction.type === 'bonus') {
+                    status = 'Success';
+                    statusClass = 'status-completed';
                 }
+                
+                let statusBadge = `<span class="status-badge ${statusClass}">${status}</span>`;
                 
                 row.innerHTML = `
                     <td>${time}</td>
@@ -4606,12 +4740,10 @@
             let todayEarnings = 0;
             const today = new Date().toDateString();
             
-            // Check if we should add daily earnings (24 hours passed)
             const lastEarningDate = userData.lastDailyEarningDate ? 
                 new Date(userData.lastDailyEarningDate).toDateString() : null;
             
             if (lastEarningDate !== today) {
-                // Add daily earnings from all active investments
                 userData.activeInvestments.forEach(investment => {
                     if (investment.status === 'active') {
                         const dailyEarning = (investment.amount * investment.dailyReturn / 100);
@@ -4620,7 +4752,6 @@
                 });
             }
             
-            // Add level earnings
             if (userData.levelEarnings) {
                 Object.values(userData.levelEarnings).forEach(earning => {
                     todayEarnings += (earning || 0);
@@ -4658,23 +4789,19 @@
                 return;
             }
             
-            // Only allow bonus claim if user has invested
             if (!userData.activeInvestments || userData.activeInvestments.length === 0) {
                 showNotification('You need to make an investment first to claim daily bonus!', 'error');
                 return;
             }
             
-            // Get bonus amount from settings
             const bonusAmount = publicSettings.dailyBonus || 0.01;
             
-            // Update user balance and claim date
             const updates = {
                 balance: userData.balance + bonusAmount,
                 lastBonusClaimDate: new Date().toISOString(),
                 totalEarnings: (userData.totalEarnings || 0) + bonusAmount
             };
             
-            // Add transaction
             addTransaction('bonus', bonusAmount, 'Daily Bonus Claim', 'completed');
             
             updateUserData(updates)
@@ -4698,19 +4825,15 @@
                 timestamp: new Date().toISOString()
             };
             
-            // Get existing transactions
             const transactions = userData.transactions || [];
             transactions.push(transaction);
             
-            // Update user data
             return database.ref('users/' + currentUser.uid + '/transactions').set(transactions);
         }
 
         function setupPlanCalculators() {
-            // This will be called when plans are loaded
         }
 
-        // FIXED: Investment amount calculator - no auto-correction while typing
         function updatePlanCalculator(planId) {
             const amountInput = document.getElementById(`plan${planId}Amount`);
             if (!amountInput) return;
@@ -4719,9 +4842,6 @@
             const plan = investmentPlans[planId];
             
             if (!plan) return;
-            
-            // FIXED: Don't auto-correct while user is typing
-            // Only calculate earnings based on current input
             
             const dailyEarning = amount > 0 ? (amount * plan.dailyReturn / 100).toFixed(2) : '0.00';
             const totalReturn = amount > 0 ? (dailyEarning * plan.days).toFixed(2) : '0.00';
@@ -4733,14 +4853,12 @@
             if (totalElement) totalElement.textContent = '$' + totalReturn;
         }
 
-        // FIXED: Investment validation function
         function investInPlan(planId) {
             if (!userData) {
                 showNotification('Please login to invest', 'error');
                 return;
             }
             
-            // Check if user has already invested in this plan
             if (userInvestedPlans.has(planId)) {
                 showNotification('You have already invested in this plan. You cannot invest in the same plan multiple times.', 'error');
                 return;
@@ -4755,21 +4873,18 @@
                 return;
             }
             
-            // FIXED: Better validation
             if (!amount || amount <= 0) {
                 showNotification(`Please enter a valid amount`, 'error');
                 amountInput.focus();
                 return;
             }
             
-            // Check if amount is within plan limits
             if (amount < plan.min || amount > plan.max) {
                 showNotification(`Amount must be between $${plan.min} and $${plan.max}`, 'error');
                 amountInput.focus();
                 return;
             }
             
-            // Check decimal numbers
             if (!Number.isInteger(amount)) {
                 showNotification('Please enter whole numbers only (no decimals)', 'error');
                 amountInput.focus();
@@ -4782,9 +4897,8 @@
                 return;
             }
             
-            // Create investment with 24-hour earning cycle
             const now = new Date();
-            const nextEarningTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
+            const nextEarningTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
             
             const investment = {
                 planId: planId,
@@ -4801,7 +4915,6 @@
                 lastEarningDate: null
             };
             
-            // Update user data
             const activeInvestments = userData.activeInvestments || [];
             activeInvestments.push(investment);
             
@@ -4812,10 +4925,8 @@
                 selfBusiness: (userData.selfBusiness || 0) + amount
             };
             
-            // Add transaction
             addTransaction('investment', amount, `Invested in ${plan.name}`, 'completed');
             
-            // Distribute commission to upline
             distributeCommissionToUpline(amount, userData.upline);
             
             updateUserData(updates)
@@ -4825,16 +4936,12 @@
                     updateBusinessSummary();
                     updatePlansDisplay();
                     
-                    // Add to invested plans set
                     userInvestedPlans.add(planId);
                     
-                    // Recalculate next earning time
                     calculateNextEarningTime();
                     
-                    // Enable daily bonus
                     checkDailyBonusEligibility();
                     
-                    // Reset input field
                     amountInput.value = '';
                     updatePlanCalculator(planId);
                 })
@@ -4863,7 +4970,6 @@
                     
                     const commission = (amount * commissionRate / 100);
                     
-                    // Update upline's earnings
                     const updates = {};
                     updates['balance'] = (upline.balance || 0) + commission;
                     updates['totalEarnings'] = (upline.totalEarnings || 0) + commission;
@@ -4873,10 +4979,8 @@
                     
                     database.ref('users/' + uplineId).update(updates);
                     
-                    // Add transaction for upline
                     addUplineTransaction(uplineId, commission, `Level ${level} commission from ${userData.name}`);
                     
-                    // Continue to next level
                     if (upline.upline) {
                         distributeCommissionToUpline(amount, upline.upline, level + 1);
                     }
@@ -4925,7 +5029,7 @@
                     <td>${investment.dailyReturn}%</td>
                     <td>${daysLeft}</td>
                     <td>$${totalEarned.toFixed(2)}</td>
-                    <td><span class="status-badge ${investment.status === 'active' ? 'status-active' : 'status-completed'}">${investment.status}</span></td>
+                    <td><span class="status-badge ${investment.status === 'active' ? 'status-approved' : 'status-completed'}">${investment.status}</span></td>
                 `;
                 historyTable.appendChild(row);
             });
@@ -4934,11 +5038,9 @@
         function startInvestmentEarnings() {
             if (!userData || !userData.activeInvestments) return;
             
-            // Clear any existing intervals
             Object.values(investmentIntervals).forEach(interval => clearInterval(interval));
             investmentIntervals = {};
             
-            // Start earning simulation for each active investment
             userData.activeInvestments.forEach((investment, index) => {
                 if (investment.status === 'active') {
                     startInvestmentEarning(investment);
@@ -4949,7 +5051,6 @@
         function startInvestmentEarning(investment) {
             const investmentId = Date.now() + Math.random();
             
-            // Check every minute for earning time
             const interval = setInterval(() => {
                 if (!userData) {
                     clearInterval(interval);
@@ -4960,27 +5061,22 @@
                 const endDate = new Date(investment.endDate);
                 
                 if (now >= endDate) {
-                    // Investment completed
                     clearInterval(interval);
                     updateInvestmentStatus(investment, 'completed');
                     return;
                 }
                 
-                // Check if it's time for daily earnings (24 hours passed)
                 const nextEarningDate = new Date(investment.nextEarningDate);
                 
                 if (now >= nextEarningDate) {
-                    // Calculate daily earnings
                     const dailyEarning = investment.amount * investment.dailyReturn / 100;
                     
-                    // Update user balance
                     const updates = {
                         balance: userData.balance + dailyEarning,
                         totalEarnings: (userData.totalEarnings || 0) + dailyEarning,
                         lastDailyEarningDate: now.toISOString()
                     };
                     
-                    // Update investment earnings and next earning date
                     const activeInvestments = userData.activeInvestments || [];
                     const investmentIndex = activeInvestments.findIndex(inv => 
                         inv.planId === investment.planId && 
@@ -4997,17 +5093,14 @@
                     
                     updateUserData(updates);
                     
-                    // Add transaction
                     addTransaction('investment_earning', dailyEarning, `Daily return from ${investment.planName}`, 'completed');
                     
-                    // Recalculate next earning time
                     calculateNextEarningTime();
                     
-                    // Update investment history display
                     updateInvestmentHistory();
                 }
                 
-            }, 60000); // Check every minute
+            }, 60000);
             
             investmentIntervals[investmentId] = interval;
         }
@@ -5021,7 +5114,6 @@
                 return;
             }
             
-            // Find the earliest next earning date among all active investments
             let earliestDate = null;
             
             userData.activeInvestments.forEach(investment => {
@@ -5038,7 +5130,6 @@
                 document.getElementById('nextEarningTimer').style.display = 'block';
                 updateNextEarningTimer();
                 
-                // Start timer interval if not already started
                 if (!earningTimerInterval) {
                     earningTimerInterval = setInterval(updateNextEarningTimer, 1000);
                 }
@@ -5058,7 +5149,6 @@
             const diff = nextEarningTime - now;
             
             if (diff <= 0) {
-                // Time's up, recalculate next earning time
                 calculateNextEarningTime();
                 return;
             }
@@ -5091,10 +5181,8 @@
         }
 
         function updateActiveInvestments() {
-            // This function updates the active investments display
             if (!userData || !userData.activeInvestments) return;
             
-            // Update investment history display
             updateInvestmentHistory();
         }
 
@@ -5118,7 +5206,6 @@
                 const teamProgress = Math.min((teamBusiness / reward.teamBusiness) * 100, 100);
                 const totalProgress = Math.min((selfProgress + teamProgress) / 2, 100);
                 
-                // Update progress bars
                 const progressBar = document.getElementById(`reward${rewardId}Progress`);
                 const progressText = document.getElementById(`reward${rewardId}ProgressText`);
                 const claimBtn = document.getElementById(`reward${rewardId}Btn`);
@@ -5186,20 +5273,17 @@
             const reward = leadershipRewards[rewardId];
             if (!reward) return;
             
-            // Check if already claimed
             const isClaimed = userData.claimedRewards?.includes(parseInt(rewardId)) || false;
             if (isClaimed) {
                 showNotification('Reward already claimed!', 'error');
                 return;
             }
             
-            // Check requirements
             if ((userData.selfBusiness || 0) < reward.selfBusiness || (userData.teamBusiness || 0) < reward.teamBusiness) {
                 showNotification('Requirements not met for this reward!', 'error');
                 return;
             }
             
-            // Update claimed rewards
             const claimedRewards = userData.claimedRewards || [];
             claimedRewards.push(parseInt(rewardId));
             
@@ -5218,7 +5302,6 @@
             
             let totalCommission = 0;
             
-            // Update level counts and earnings
             for (let level = 1; level <= 9; level++) {
                 const count = userData.levelCounts?.[`level${level}`] || 0;
                 const earnings = userData.levelEarnings?.[`level${level}`] || 0;
@@ -5235,16 +5318,13 @@
         function updateNetworkTree() {
             if (!userData) return;
             
-            // Update network statistics
             document.getElementById('totalDownline').textContent = userData.totalDownline || 0;
             document.getElementById('activeDownline').textContent = userData.directReferrals || 0;
             document.getElementById('totalTeams').textContent = Object.values(userData.levelCounts || {}).reduce((a, b) => a + b, 0);
             
-            // Simple network tree visualization
             const networkTree = document.getElementById('networkTree');
             networkTree.innerHTML = '';
             
-            // Add user node
             const userLevel = document.createElement('div');
             userLevel.className = 'tree-level';
             userLevel.innerHTML = `
@@ -5255,7 +5335,6 @@
             `;
             networkTree.appendChild(userLevel);
             
-            // Add direct referrals (level 1)
             if (userData.directReferrals > 0) {
                 const level1 = document.createElement('div');
                 level1.className = 'tree-level';
@@ -5297,7 +5376,6 @@
             document.getElementById('withdrawnAmount').textContent = (userData.totalWithdrawn || 0).toFixed(2) + ' USDT';
             document.getElementById('availableEarnings').textContent = userData.balance.toFixed(2) + ' USDT';
             
-            // Calculate pending earnings from active investments
             let pendingEarnings = 0;
             if (userData.activeInvestments) {
                 userData.activeInvestments.forEach(investment => {
@@ -5352,7 +5430,7 @@
                     <td>${source}</td>
                     <td>${transaction.amount.toFixed(2)} USDT</td>
                     <td>${date}</td>
-                    <td><span class="status-badge status-completed">Completed</span></td>
+                    <td><span class="status-badge status-completed">Success</span></td>
                 `;
                 earningsTable.appendChild(row);
             });
@@ -5361,6 +5439,7 @@
         function updateTransactions() {
             updateDepositsTable();
             updateWithdrawalsTable();
+            updateRecentActivity();
         }
 
         function updateDepositsTable() {
@@ -5381,11 +5460,26 @@
                 const row = document.createElement('tr');
                 const date = new Date(transaction.timestamp).toLocaleDateString();
                 
+                let status = transaction.status || 'pending';
+                let statusClass = 'status-pending';
+                let statusText = 'Pending';
+                
+                if (status === 'approved') {
+                    statusClass = 'status-approved';
+                    statusText = 'Success';
+                } else if (status === 'rejected') {
+                    statusClass = 'status-rejected';
+                    statusText = 'Failed';
+                } else if (status === 'completed') {
+                    statusClass = 'status-completed';
+                    statusText = 'Success';
+                }
+                
                 row.innerHTML = `
                     <td>${date}</td>
                     <td>${transaction.amount.toFixed(2)} USDT</td>
                     <td>USDT BEP20</td>
-                    <td><span class="status-badge status-completed">Completed</span></td>
+                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
                 `;
                 depositsTable.appendChild(row);
             });
@@ -5411,12 +5505,27 @@
                 const fee = transaction.fee || (transaction.amount * (publicSettings.withdrawalFee || 12) / 100);
                 const netAmount = transaction.netAmount || (transaction.amount - fee);
                 
+                let status = transaction.status || 'pending';
+                let statusClass = 'status-pending';
+                let statusText = 'Pending';
+                
+                if (status === 'approved') {
+                    statusClass = 'status-approved';
+                    statusText = 'Success';
+                } else if (status === 'rejected') {
+                    statusClass = 'status-rejected';
+                    statusText = 'Failed';
+                } else if (status === 'completed') {
+                    statusClass = 'status-completed';
+                    statusText = 'Success';
+                }
+                
                 row.innerHTML = `
                     <td>${date}</td>
                     <td>${transaction.amount.toFixed(2)} USDT</td>
                     <td>${netAmount.toFixed(2)} USDT</td>
                     <td>${fee.toFixed(2)} USDT</td>
-                    <td><span class="status-badge ${transaction.status === 'pending' ? 'status-pending' : transaction.status === 'completed' ? 'status-completed' : 'status-active'}">${transaction.status}</span></td>
+                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
                 `;
                 withdrawalsTable.appendChild(row);
             });
@@ -5427,7 +5536,6 @@
         // ====================
         function openDepositModal() {
             document.getElementById('depositModal').classList.add('active');
-            // Update available balance and limits with minimum $5
             const minDeposit = Math.max(5, publicSettings.minDeposit || 5);
             const maxDeposit = publicSettings.maxDeposit || 5000;
             
@@ -5436,13 +5544,23 @@
             document.getElementById('depositAmount').placeholder = minDeposit;
             document.getElementById('depositAmount').value = minDeposit;
             
-            // Update displayed values
             document.getElementById('minDepositAmount').textContent = minDeposit;
             document.getElementById('maxDepositAmount').textContent = maxDeposit;
         }
 
         function closeDepositModal() {
             document.getElementById('depositModal').classList.remove('active');
+        }
+
+        function copyDepositAddress() {
+            const address = document.getElementById('depositAddress').value;
+            navigator.clipboard.writeText(address)
+                .then(() => {
+                    showNotification('Deposit address copied to clipboard!', 'success');
+                })
+                .catch((error) => {
+                    showNotification('Failed to copy address', 'error');
+                });
         }
 
         function processDeposit() {
@@ -5455,7 +5573,6 @@
                 return;
             }
             
-            // Create deposit request
             const depositRequest = {
                 userId: currentUser.uid,
                 userName: userData.name,
@@ -5465,13 +5582,11 @@
                 type: 'deposit'
             };
             
-            // Save deposit request to database
             database.ref('depositRequests').push(depositRequest)
                 .then(() => {
                     showNotification('Deposit request submitted! Admin will approve it shortly.', 'success');
                     closeDepositModal();
                     
-                    // Add to user transactions
                     addTransaction('deposit', amount, 'Deposit Request', 'pending');
                 })
                 .catch((error) => {
@@ -5482,10 +5597,8 @@
         function openWithdrawModal() {
             document.getElementById('withdrawModal').classList.add('active');
             
-            // Update available balance
             document.getElementById('availableBalance').textContent = userData.balance.toFixed(2) + ' USDT';
             
-            // Setup withdrawal amount calculator
             const withdrawInput = document.getElementById('withdrawAmount');
             const minWithdrawal = publicSettings.minWithdrawal || 1;
             withdrawInput.value = Math.max(minWithdrawal, Math.min(userData.balance, 100));
@@ -5540,7 +5653,6 @@
             const withdrawalFee = (amount * withdrawalFeePercent / 100);
             const netAmount = amount - withdrawalFee;
             
-            // Create withdrawal request
             const withdrawalRequest = {
                 userId: currentUser.uid,
                 userName: userData.name,
@@ -5553,13 +5665,11 @@
                 type: 'withdrawal'
             };
             
-            // Save withdrawal request to database
             database.ref('withdrawalRequests').push(withdrawalRequest)
                 .then(() => {
                     showNotification('Withdrawal request submitted! Admin will process it within 24 hours.', 'success');
                     closeWithdrawModal();
                     
-                    // Add to user transactions
                     addTransaction('withdrawal', amount, 'Withdrawal Request', 'pending');
                 })
                 .catch((error) => {
@@ -5574,7 +5684,7 @@
 
         function openAdminPanel() {
             const password = prompt('Enter admin password:');
-            if (password === 'admin123') { // Default admin password
+            if (password === 'admin123') {
                 document.getElementById('adminModal').classList.add('active');
                 loadSystemSettings();
             } else {
@@ -5809,37 +5919,52 @@
                     table.innerHTML = '';
                     
                     Object.entries(requests).forEach(([id, request]) => {
-                        if (request.status === 'pending') {
+                        if (request.status === 'pending' || request.status === 'approved' || request.status === 'rejected') {
                             const row = document.createElement('tr');
-                            row.innerHTML = `
-                                <td>${request.userName || 'Unknown'}</td>
-                                <td>$${request.amount || 0}</td>
-                                <td>${new Date(request.timestamp).toLocaleDateString()}</td>
-                                <td><span class="status-badge status-pending">Pending</span></td>
-                                <td>
+                            
+                            let statusBadge = '';
+                            if (request.status === 'pending') {
+                                statusBadge = '<span class="status-badge status-pending">Pending</span>';
+                            } else if (request.status === 'approved') {
+                                statusBadge = '<span class="status-badge status-approved">Success</span>';
+                            } else if (request.status === 'rejected') {
+                                statusBadge = '<span class="status-badge status-rejected">Failed</span>';
+                            }
+                            
+                            let actionButtons = '';
+                            if (request.status === 'pending') {
+                                actionButtons = `
                                     <button class="btn btn-small btn-success" onclick="approveDeposit('${id}', '${request.userId}', ${request.amount})">
                                         <i class="fas fa-check"></i> Approve
                                     </button>
                                     <button class="btn btn-small btn-danger" onclick="rejectDeposit('${id}')">
                                         <i class="fas fa-times"></i> Reject
                                     </button>
-                                </td>
+                                `;
+                            } else {
+                                actionButtons = '<span style="color: #64748b; font-size: 0.85rem;">Completed</span>';
+                            }
+                            
+                            row.innerHTML = `
+                                <td>${request.userName || 'Unknown'}</td>
+                                <td>$${request.amount || 0}</td>
+                                <td>${new Date(request.timestamp).toLocaleDateString()}</td>
+                                <td>${statusBadge}</td>
+                                <td>${actionButtons}</td>
                             `;
                             table.appendChild(row);
                         }
                     });
                     
                     if (table.innerHTML === '') {
-                        table.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">No pending deposit requests</td></tr>';
+                        table.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">No deposit requests</td></tr>';
                     }
                 });
         }
 
         function approveDeposit(requestId, userId, amount) {
-            // Update request status
             database.ref(`depositRequests/${requestId}`).update({ status: 'approved' })
                 .then(() => {
-                    // Update user balance
                     database.ref(`users/${userId}`).once('value')
                         .then((snapshot) => {
                             const user = snapshot.val();
@@ -5847,17 +5972,17 @@
                                 const newBalance = (user.balance || 0) + amount;
                                 database.ref(`users/${userId}`).update({ balance: newBalance });
                                 
-                                // Add transaction for user
                                 database.ref(`users/${userId}/transactions`).once('value')
                                     .then((snapshot) => {
                                         const transactions = snapshot.val() || [];
-                                        transactions.push({
-                                            type: 'deposit',
-                                            amount: amount,
-                                            description: 'Deposit Approved',
-                                            status: 'completed',
-                                            timestamp: new Date().toISOString()
-                                        });
+                                        // Update the latest deposit transaction status
+                                        for (let i = transactions.length - 1; i >= 0; i--) {
+                                            if (transactions[i].type === 'deposit' && 
+                                                transactions[i].amount === amount) {
+                                                transactions[i].status = 'approved';
+                                                break;
+                                            }
+                                        }
                                         
                                         database.ref(`users/${userId}/transactions`).set(transactions);
                                     });
@@ -5875,6 +6000,27 @@
         function rejectDeposit(requestId) {
             database.ref(`depositRequests/${requestId}`).update({ status: 'rejected' })
                 .then(() => {
+                    database.ref(`depositRequests/${requestId}`).once('value')
+                        .then((snapshot) => {
+                            const request = snapshot.val();
+                            if (request) {
+                                database.ref(`users/${request.userId}/transactions`).once('value')
+                                    .then((snapshot) => {
+                                        const transactions = snapshot.val() || [];
+                                        // Update the latest deposit transaction status
+                                        for (let i = transactions.length - 1; i >= 0; i--) {
+                                            if (transactions[i].type === 'deposit' && 
+                                                transactions[i].amount === request.amount) {
+                                                transactions[i].status = 'rejected';
+                                                break;
+                                            }
+                                        }
+                                        
+                                        database.ref(`users/${request.userId}/transactions`).set(transactions);
+                                    });
+                            }
+                        });
+                    
                     showNotification('Deposit rejected!', 'success');
                     loadDepositRequests();
                 })
@@ -5891,38 +6037,53 @@
                     table.innerHTML = '';
                     
                     Object.entries(requests).forEach(([id, request]) => {
-                        if (request.status === 'pending') {
+                        if (request.status === 'pending' || request.status === 'approved' || request.status === 'rejected') {
                             const row = document.createElement('tr');
-                            row.innerHTML = `
-                                <td>${request.userName || 'Unknown'}</td>
-                                <td>$${request.amount || 0}</td>
-                                <td style="font-size: 0.8rem;">${request.walletAddress ? request.walletAddress.substring(0, 20) + '...' : 'N/A'}</td>
-                                <td>${new Date(request.timestamp).toLocaleDateString()}</td>
-                                <td><span class="status-badge status-pending">Pending</span></td>
-                                <td>
+                            
+                            let statusBadge = '';
+                            if (request.status === 'pending') {
+                                statusBadge = '<span class="status-badge status-pending">Pending</span>';
+                            } else if (request.status === 'approved') {
+                                statusBadge = '<span class="status-badge status-approved">Success</span>';
+                            } else if (request.status === 'rejected') {
+                                statusBadge = '<span class="status-badge status-rejected">Failed</span>';
+                            }
+                            
+                            let actionButtons = '';
+                            if (request.status === 'pending') {
+                                actionButtons = `
                                     <button class="btn btn-small btn-success" onclick="approveWithdrawal('${id}', '${request.userId}', ${request.amount})">
                                         <i class="fas fa-check"></i> Approve
                                     </button>
                                     <button class="btn btn-small btn-danger" onclick="rejectWithdrawal('${id}')">
                                         <i class="fas fa-times"></i> Reject
                                     </button>
-                                </td>
+                                `;
+                            } else {
+                                actionButtons = '<span style="color: #64748b; font-size: 0.85rem;">Completed</span>';
+                            }
+                            
+                            row.innerHTML = `
+                                <td>${request.userName || 'Unknown'}</td>
+                                <td>$${request.amount || 0}</td>
+                                <td style="font-size: 0.8rem;">${request.walletAddress ? request.walletAddress.substring(0, 20) + '...' : 'N/A'}</td>
+                                <td>${new Date(request.timestamp).toLocaleDateString()}</td>
+                                <td>${statusBadge}</td>
+                                <td>${actionButtons}</td>
                             `;
                             table.appendChild(row);
                         }
                     });
                     
                     if (table.innerHTML === '') {
-                        table.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No pending withdrawal requests</td></tr>';
+                        table.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No withdrawal requests</td></tr>';
                     }
                 });
         }
 
         function approveWithdrawal(requestId, userId, amount) {
-            // Update request status
             database.ref(`withdrawalRequests/${requestId}`).update({ status: 'approved' })
                 .then(() => {
-                    // Update user balance and withdrawn amount
                     database.ref(`users/${userId}`).once('value')
                         .then((snapshot) => {
                             const user = snapshot.val();
@@ -5935,17 +6096,17 @@
                                     totalWithdrawn: newWithdrawn
                                 });
                                 
-                                // Add transaction for user
                                 database.ref(`users/${userId}/transactions`).once('value')
                                     .then((snapshot) => {
                                         const transactions = snapshot.val() || [];
-                                        transactions.push({
-                                            type: 'withdrawal',
-                                            amount: amount,
-                                            description: 'Withdrawal Approved',
-                                            status: 'completed',
-                                            timestamp: new Date().toISOString()
-                                        });
+                                        // Update the latest withdrawal transaction status
+                                        for (let i = transactions.length - 1; i >= 0; i--) {
+                                            if (transactions[i].type === 'withdrawal' && 
+                                                transactions[i].amount === amount) {
+                                                transactions[i].status = 'approved';
+                                                break;
+                                            }
+                                        }
                                         
                                         database.ref(`users/${userId}/transactions`).set(transactions);
                                     });
@@ -5963,6 +6124,27 @@
         function rejectWithdrawal(requestId) {
             database.ref(`withdrawalRequests/${requestId}`).update({ status: 'rejected' })
                 .then(() => {
+                    database.ref(`withdrawalRequests/${requestId}`).once('value')
+                        .then((snapshot) => {
+                            const request = snapshot.val();
+                            if (request) {
+                                database.ref(`users/${request.userId}/transactions`).once('value')
+                                    .then((snapshot) => {
+                                        const transactions = snapshot.val() || [];
+                                        // Update the latest withdrawal transaction status
+                                        for (let i = transactions.length - 1; i >= 0; i--) {
+                                            if (transactions[i].type === 'withdrawal' && 
+                                                transactions[i].amount === request.amount) {
+                                                transactions[i].status = 'rejected';
+                                                break;
+                                            }
+                                        }
+                                        
+                                        database.ref(`users/${request.userId}/transactions`).set(transactions);
+                                    });
+                            }
+                        });
+                    
                     showNotification('Withdrawal rejected!', 'success');
                     loadWithdrawalRequests();
                 })
@@ -5985,7 +6167,7 @@
                             <td>${user.email || 'N/A'}</td>
                             <td>$${user.balance || 0}</td>
                             <td>${user.directReferrals || 0}</td>
-                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><span class="status-badge status-approved">Active</span></td>
                             <td>
                                 <button class="btn btn-small" onclick="editUser('${id}')">
                                     <i class="fas fa-edit"></i> Edit
@@ -6020,11 +6202,9 @@
             
             if (!message) return;
             
-            // Add user message
             addChatMessage('user', message);
             input.value = '';
             
-            // Simulate bot response
             setTimeout(() => {
                 const responses = [
                     "Thanks for your message! Our support team will get back to you soon.",
@@ -6131,8 +6311,8 @@
             if (!userData) return;
             
             document.getElementById('referralModal').classList.add('active');
-            document.getElementById('referralLinkText').textContent = 
-                `https://cryptowealth.pro/ref/${userData.referralCode}`;
+            const referralLink = `${currentDomain}/?ref=${userData.referralCode}`;
+            document.getElementById('referralLinkText').textContent = referralLink;
         }
 
         function closeReferralModal() {
@@ -6161,19 +6341,19 @@
         }
 
         function shareOnFacebook() {
-            const link = encodeURIComponent(`https://cryptowealth.pro/ref/${userData.referralCode}`);
+            const link = encodeURIComponent(`${currentDomain}/?ref=${userData.referralCode}`);
             const text = encodeURIComponent("Join CryptoWealth Pro and earn 6-7.5% daily returns! 9-level commission structure.");
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${link}&quote=${text}`, '_blank');
         }
 
         function shareOnWhatsApp() {
-            const link = `https://cryptowealth.pro/ref/${userData.referralCode}`;
+            const link = `${currentDomain}/?ref=${userData.referralCode}`;
             const text = `Join CryptoWealth Pro and earn 6-7.5% daily returns! 9-level commission structure. Sign up here: ${link}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
         }
 
         function shareOnTelegram() {
-            const link = `https://cryptowealth.pro/ref/${userData.referralCode}`;
+            const link = `${currentDomain}/?ref=${userData.referralCode}`;
             const text = `Join CryptoWealth Pro and earn 6-7.5% daily returns! 9-level commission structure. Sign up here: ${link}`;
             window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(text)}`, '_blank');
         }
@@ -6206,7 +6386,6 @@
                 updateUserData(updates)
                     .then(() => {
                         showNotification('Profile updated successfully!', 'success');
-                        // Update sidebar
                         updateSidebarProfile();
                     })
                     .catch((error) => {
@@ -6235,10 +6414,8 @@
             
             container.appendChild(notification);
             
-            // Show notification
             setTimeout(() => notification.classList.add('show'), 10);
             
-            // Remove after 5 seconds
             setTimeout(() => {
                 notification.classList.remove('show');
                 setTimeout(() => notification.remove(), 300);
@@ -6258,13 +6435,11 @@
                 const updates = {};
                 const now = new Date();
                 
-                // Check each active investment
                 userData.activeInvestments.forEach((investment, index) => {
                     if (investment.status === 'active') {
                         const endDate = new Date(investment.endDate);
                         
                         if (now >= endDate) {
-                            // Investment completed
                             userData.activeInvestments[index].status = 'completed';
                             hasUpdate = true;
                         }
@@ -6276,7 +6451,7 @@
                     updateUserData(updates);
                 }
                 
-            }, 60000); // Check every minute
+            }, 60000);
         }
 
         // Start investment simulation
